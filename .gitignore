@@ -1,0 +1,45 @@
+# Fichiers et dossiers à ignorer pour Git
+
+# Fichiers du système d'exploitation
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Éditeurs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+venv/
+.env
+
+# Fichiers temporaires
+*.tmp
+*.bak
+*.log
+
+# Dossiers de build
+dist/
+build/
+
+# Fichiers de configuration personnels
+config.local.js
+config.local.json
+
+# Cache
+.cache/

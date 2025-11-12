@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Mohamed ONIFADE</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- HEADER / NAVIGATION -->
+    <header class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <h1>Mohamed ONIFADE</h1>
+                    <p class="subtitle">Master 2 - Administration Réseau et Système</p>
+                </div>
+                <nav class="nav">
+                    <a href="#accueil" class="nav-link active">Accueil</a>
+                    <a href="#apropos" class="nav-link">À propos</a>
+                    <a href="#competences" class="nav-link">Compétences</a>
+                    <a href="#projets" class="nav-link">Projets</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION ACCUEIL -->
+    <section id="accueil" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-image">
+                    <img src="images/profile.jpg" alt="Mohamed ONIFADE" class="profile-hero">
+                </div>
+                <h2>Bienvenue sur mon Portfolio</h2>
+                <p>Je suis Mohamed ONIFADE, étudiant en Master 2 Administration Réseau et Système passionné par l'infrastructure informatique et la gestion des systèmes.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Me contacter</a>
+                    <a href="#projets" class="btn btn-secondary">Voir mes projets</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION À PROPOS -->
+    <section id="apropos" class="about">
+        <div class="container">
+            <h2 class="section-title">À propos de moi</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Je suis actuellement en Master 2 Administration Réseau et Système, avec une solide base en informatique 
+                        et un intérêt particulier pour l'administration système, la sécurité réseau et l'infrastructure cloud.
+                    </p>
+                    <p>
+                        Au cours de ma formation, j'ai développé des compétences pratiques dans la gestion de serveurs, 
+                        la configuration de réseaux, et l'administration de systèmes Linux et Windows.
+                    </p>
+                    <p>
+                        Je suis motivé par les défis techniques et toujours à la recherche de nouvelles connaissances pour rester 
+                        à jour avec les dernières technologies du domaine.
+                    </p>
+                </div>
+                <div class="about-info">
+                    <div class="info-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Formation</h3>
+                        <p>Master 2 Administration Réseau et Système</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-laptop"></i>
+                        <h3>Spécialité</h3>
+                        <p>Infrastructure & Systèmes</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Intérêts</h3>
+                        <p>Cloud, Sécurité, DevOps</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION COMPÉTENCES -->
+    <section id="competences" class="skills">
+        <div class="container">
+            <h2 class="section-title">Compétences</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-server"></i>
+                    <h3>Administration Système</h3>
+                    <ul>
+                        <li>Linux (Ubuntu, CentOS, Debian)</li>
+                        <li>Windows Server</li>
+                        <li>Gestion des utilisateurs et permissions</li>
+                        <li>Maintenance et support</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Administration Réseau</h3>
+                    <ul>
+                        <li>Configuration TCP/IP</li>
+                        <li>DHCP et DNS</li>
+                        <li>Firewalls et sécurité</li>
+                        <li>Protocoles réseau (OSI, TCP/IP)</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Cloud & Virtualisation</h3>
+                    <ul>
+                        <li>Docker et Containerization</li>
+                        <li>Proxmox / KVM</li>
+                        <li>AWS / Azure (base)</li>
+                        <li>Orchestration</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Outils & Technologies</h3>
+                    <ul>
+                        <li>Bash / PowerShell scripting</li>
+                        <li>Git / Version control</li>
+                        <li>Monitoring (Nagios, Zabbix)</li>
+                        <li>Backup & Disaster Recovery</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Sécurité Informatique</h3>
+                    <ul>
+                        <li>Audits de sécurité</li>
+                        <li>Gestion des accès (IAM)</li>
+                        <li>Principes de sécurité</li>
+                        <li>Compliance et conformité</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Programmation</h3>
+                    <ul>
+                        <li>Python (automation)</li>
+                        <li>Bash scripting</li>
+                        <li>HTML / CSS</li>
+                        <li>JavaScript (base)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION PROJETS -->
+    <section id="projets" class="projects">
+        <div class="container">
+            <h2 class="section-title">Mes Projets</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Infrastructure Serveur</h3>
+                        <p>Configuration et déploiement d'une infrastructure serveur avec Linux, virtualisation et haute disponibilité.</p>
+                        <div class="project-tags">
+                            <span class="tag">Linux</span>
+                            <span class="tag">Proxmox</span>
+                            <span class="tag">Infrastructure</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Sécurité Réseau</h3>
+                        <p>Mise en place d'une politique de sécurité réseau, configuration de firewalls et VPN.</p>
+                        <div class="project-tags">
+                            <span class="tag">Sécurité</span>
+                            <span class="tag">Firewall</span>
+                            <span class="tag">VPN</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Gestion de Base de Données</h3>
+                        <p>Administrations et optimisations de bases de données avec sauvegarde et récupération.</p>
+                        <div class="project-tags">
+                            <span class="tag">Database</span>
+                            <span class="tag">Backup</span>
+                            <span class="tag">SQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-docker"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Containerisation Docker</h3>
+                        <p>Déploiement d'applications en conteneurs avec Docker et Docker Compose.</p>
+                        <div class="project-tags">
+                            <span class="tag">Docker</span>
+                            <span class="tag">Container</span>
+                            <span class="tag">DevOps</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Monitoring et Supervision</h3>
+                        <p>Mise en place de solutions de monitoring pour surveiller l'infrastructure.</p>
+                        <div class="project-tags">
+                            <span class="tag">Monitoring</span>
+                            <span class="tag">Supervision</span>
+                            <span class="tag">Nagios</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Automation & Scripting</h3>
+                        <p>Automatisation des tâches administratives avec scripts Bash et Python.</p>
+                        <div class="project-tags">
+                            <span class="tag">Bash</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Automation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION CONTACT -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Me Contacter</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p><a href="mailto:your.email@example.com">your.email@example.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Téléphone</h3>
+                            <p><a href="tel:+33612345678">+33 6 12 34 56 78</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Localisation</h3>
+                            <p>France</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-linkedin"></i>
+                        <div>
+                            <h3>LinkedIn</h3>
+                            <p><a href="https://linkedin.com" target="_blank">Mon profil LinkedIn</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Mohamed ONIFADE</h3>
+                    <p>Master 2 - Administration Réseau et Système</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation Rapide</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#apropos">À propos</a></li>
+                        <li><a href="#competences">Compétences</a></li>
+                        <li><a href="#projets">Projets</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Suivez-moi</h4>
+                    <div class="social-links">
+                        <a href="https://linkedin.com" target="_blank" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="mailto:your.email@example.com" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Mohamed ONIFADE. Tous droits réservés.</p>
+                <p>Développé avec <i class="fas fa-heart"></i> en HTML & CSS</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
