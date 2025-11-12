@@ -4,14 +4,17 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
-    // Animation du nom (hero)
+    // Animation du nom (hero) - plus rapide
     const heroNameEl = document.getElementById('hero-name');
     if (heroNameEl) {
-        typeWriter(heroNameEl, 'Mohamed ONIFADE', 70);
+        typeWriter(heroNameEl, 'Mohamed ONIFADE', 45);
     }
     
     // Effet parallax souris sur hero-content
     setupParallax();
+    
+    // Rotation 3D au scroll
+    setup3DScroll();
 
     // Gestion du scroll pour activer les liens de navigation
     window.addEventListener('scroll', function() {
@@ -226,6 +229,45 @@ function typeWriter(element, text, speed = 50) {
 // Utilisation : typeWriter(document.querySelector('.hero-content h2'), 'Bienvenue sur mon Portfolio');
 
 // ========================================
+// ROTATION 3D AU SCROLL
+// ========================================
+
+function setup3DScroll() {
+    const hero = document.querySelector('.hero');
+    const heroImage = document.querySelector('.profile-hero');
+    const heroName = document.querySelector('.hero-name');
+    
+    if (!hero || !heroImage) return;
+    
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        const heroHeight = hero.offsetHeight;
+        const scrollPercent = Math.min(scrolled / heroHeight, 1);
+        
+        // Rotation 3D de l'image au scroll
+        const rotateX = scrollPercent * 15;
+        const rotateY = scrollPercent * 10;
+        const scale = 1 - scrollPercent * 0.15;
+        
+        heroImage.style.transform = `
+            rotateX(${rotateX}deg) 
+            rotateY(${rotateY}deg) 
+            scale(${scale})
+        `;
+        
+        // Blur progressif au scroll
+        const blurAmount = scrollPercent * 5;
+        heroImage.style.filter = `blur(${blurAmount}px)`;
+        
+        // Fade out du nom
+        if (heroName) {
+            heroName.style.opacity = 1 - scrollPercent * 0.8;
+            heroName.style.transform = `translateY(${scrollPercent * -30}px)`;
+        }
+    });
+}
+
+// ========================================
 // PARALLAX MOUSE EFFECT
 // ========================================
 
@@ -233,6 +275,7 @@ function setupParallax() {
     const hero = document.querySelector('.hero');
     const heroImage = document.querySelector('.profile-hero');
     const heroContent = document.querySelector('.hero-content');
+    const heroMetaItems = document.querySelectorAll('.hero-meta-item');
     
     if (!hero || !heroImage) return;
     
@@ -247,24 +290,43 @@ function setupParallax() {
         const deltaX = (x - centerX) / centerX;
         const deltaY = (y - centerY) / centerY;
         
-        // Effet parallax subtil sur l'image
-        const moveX = deltaX * 15;
-        const moveY = deltaY * 15;
+        // Effet parallax plus prononcé sur l'image
+        const moveX = deltaX * 25;
+        const moveY = deltaY * 25;
         
-        heroImage.style.transform = `translate(${moveX}px, ${moveY}px) scale(1)`;
+        // Rotation 3D sur l'image
+        const rotateY = deltaX * 8;
+        const rotateX = -deltaY * 8;
         
-        // Effet parallax inverse sur le contenu (plus subtil)
+        heroImage.style.transform = `
+            translate(${moveX}px, ${moveY}px) 
+            rotateY(${rotateY}deg) 
+            rotateX(${rotateX}deg)
+            scale(1)
+        `;
+        
+        // Effet parallax inverse sur le contenu
         if (heroContent) {
-            const contentMoveX = deltaX * -5;
-            const contentMoveY = deltaY * -5;
+            const contentMoveX = deltaX * -8;
+            const contentMoveY = deltaY * -8;
             heroContent.style.transform = `translate(${contentMoveX}px, ${contentMoveY}px)`;
         }
+        
+        // Effet sur les badges (rotation légère)
+        heroMetaItems.forEach((item, index) => {
+            const itemRotate = deltaX * (index % 2 === 0 ? 3 : -3);
+            const itemMove = deltaY * 5;
+            item.style.transform = `translateY(${itemMove}px) rotate(${itemRotate}deg)`;
+        });
     });
     
     hero.addEventListener('mouseleave', () => {
-        heroImage.style.transform = 'translate(0, 0) scale(1)';
+        heroImage.style.transform = 'translate(0, 0) rotateY(0) rotateX(0) scale(1)';
         if (heroContent) {
             heroContent.style.transform = 'translate(0, 0)';
         }
+        heroMetaItems.forEach(item => {
+            item.style.transform = 'translateY(0) rotate(0)';
+        });
     });
 }

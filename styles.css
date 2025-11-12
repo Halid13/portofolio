@@ -281,19 +281,19 @@ body {
     backdrop-filter: blur(10px);
     border-radius: 50px;
     box-shadow: 0 3px 12px rgba(11, 18, 32, 0.05);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInScale 0.9s ease-out forwards;
+    animation: fadeInScale 0.6s ease-out forwards;
     font-size: 15px;
 }
 
 .hero-meta-item:nth-child(1) {
-    animation-delay: 0.5s;
+    animation-delay: 0.3s;
 }
 
 .hero-meta-item:nth-child(2) {
-    animation-delay: 0.7s;
+    animation-delay: 0.4s;
 }
 
 .hero-meta-item:hover {
@@ -314,7 +314,7 @@ body {
 
 .hero-icon {
     font-size: 20px;
-    animation: iconPulse 3s ease-in-out infinite;
+    animation: iconPulse 2s ease-in-out infinite;
 }
 
 @keyframes iconPulse {
@@ -322,7 +322,7 @@ body {
         transform: scale(1);
     }
     50% {
-        transform: scale(1.08);
+        transform: scale(1.12);
     }
 }
 
