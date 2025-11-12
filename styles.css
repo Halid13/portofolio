@@ -300,11 +300,11 @@ body {
 }
 
 /* Positions et animations lentes (drift) */
-.illu-server { top: 6%; left: -40px; transform: rotate(-2deg); animation: drift1 5s ease-in-out infinite alternate; }
+.illu-server { top: 6%; left: -35px; transform: rotate(-2deg); animation: drift1 5s ease-in-out infinite alternate; }
 .illu-cloud  { top: 12%; right: -30px; width: 300px; animation: drift2 5s ease-in-out infinite alternate; }
 .illu-shield { bottom: 16%; left: 6%; width: 220px; animation: drift3 5s ease-in-out infinite alternate; }
 .illu-network{ bottom: 8%; right: 8%; width: 240px; animation: drift1 5s ease-in-out infinite alternate; }
-.illu-db     { top: 50%; left: 72%; width: 220px; transform: translateY(-50%); animation: drift2 5s ease-in-out infinite alternate; }
+.illu-db     { top: 35%; left: 72%; width: 220px; transform: translateY(-50%); animation: drift2 5s ease-in-out infinite alternate; }
 
 @keyframes drift1 {
     0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
