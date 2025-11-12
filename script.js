@@ -4,6 +4,11 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
+    // Animation du nom (hero)
+    const heroNameEl = document.getElementById('hero-name');
+    if (heroNameEl) {
+        typeWriter(heroNameEl, 'Mohamed ONIFADE', 55);
+    }
 
     // Gestion du scroll pour activer les liens de navigation
     window.addEventListener('scroll', function() {

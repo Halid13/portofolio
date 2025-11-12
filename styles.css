@@ -188,12 +188,23 @@ body {
    ======================================== */
 
 .hero {
-    background-color: var(--bg-secondary);
+    background: linear-gradient(135deg, #F5F7FA 0%, #E6EEF7 50%, #F5F7FA 100%);
     color: var(--text-dark);
     padding: 120px 0;
     text-align: center;
     position: relative;
     overflow: hidden;
+}
+
+/* Texture subtile avec pseudo-element */
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(61, 90, 128, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(63, 108, 168, 0.03) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .hero-content h2 {
@@ -202,20 +213,158 @@ body {
     font-weight: 700;
 }
 
+/* Nom animé dans le hero */
+.hero-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 64px;
+    line-height: 1.15;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px rgba(11, 18, 32, 0.08);
+}
+
+.type-caret {
+    position: relative;
+    white-space: nowrap;
+}
+
+.type-caret::after {
+    content: '';
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    margin-left: 6px;
+    background: var(--primary-color);
+    vertical-align: -0.1em;
+    animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    50.01%, 100% { opacity: 0; }
+}
+
+.hero-meta {
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.hero-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(11, 18, 32, 0.06);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInScale 0.6s ease-out forwards;
+}
+
+.hero-meta-item:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.hero-meta-item:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.hero-meta-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(11, 18, 32, 0.12);
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.hero-icon {
+    font-size: 22px;
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.hero-role {
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.hero-role .hero-icon {
+    color: var(--secondary-color);
+}
+
+.hero-school {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.hero-school .hero-icon {
+    color: var(--accent-color);
+}
+
+.hero-tagline {
+    color: var(--text-light);
+    margin-bottom: 36px;
+    font-size: 18px;
+    font-weight: 500;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 0.7s forwards;
+}
+
 .hero-image {
-    margin-bottom: 30px;
+    margin-bottom: 36px;
     display: flex;
     justify-content: center;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 0.1s forwards;
 }
 
 .profile-hero {
-    width: 250px;
-    height: 250px;
+    width: 260px;
+    height: 260px;
     border-radius: 50%;
-    border: 4px solid var(--secondary-color);
+    border: 5px solid var(--secondary-color);
     object-fit: cover;
-    box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+    box-shadow: 
+        0 0 0 15px rgba(63, 108, 168, 0.08),
+        0 12px 40px rgba(11, 18, 32, 0.15);
     animation: floatImage 3s ease-in-out infinite;
+    transition: all 0.4s ease;
+}
+
+.profile-hero:hover {
+    transform: scale(1.05);
+    box-shadow: 
+        0 0 0 20px rgba(63, 108, 168, 0.12),
+        0 18px 50px rgba(11, 18, 32, 0.2);
 }
 
 @keyframes floatImage {
@@ -241,6 +390,8 @@ body {
     gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 0.9s forwards;
 }
 
 /* ========================================
@@ -737,6 +888,23 @@ body {
         font-size: 38px;
     }
 
+    .hero-name {
+        font-size: 42px;
+    }
+
+    .hero-meta {
+        gap: 16px;
+    }
+
+    .hero-meta-item {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .hero-icon {
+        font-size: 18px;
+    }
+
     .hero-content p {
         font-size: 16px;
     }
@@ -806,6 +974,15 @@ body {
 
     .hero-content h2 {
         font-size: 28px;
+    }
+
+    .hero-name {
+        font-size: 32px;
+    }
+
+    .hero-meta {
+        flex-direction: column;
+        gap: 12px;
     }
 
     .hero-content p {

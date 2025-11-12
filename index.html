@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Mohamed ONIFADE</title>
+    <!-- Google Fonts: Playfair Display pour un nom élégant -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -82,8 +86,18 @@
                 <div class="hero-image">
                     <img src="images/profile.jpg" alt="Mohamed ONIFADE" class="profile-hero">
                 </div>
-                <h2>Bienvenue sur mon Portfolio</h2>
-                <p>Je suis Mohamed ONIFADE, étudiant en Master 2 Administration Réseau et Système passionné par l'infrastructure informatique et la gestion des systèmes.</p>
+                <h1 class="hero-name"><span id="hero-name" class="type-caret" aria-label="Nom et prénom">Mohamed ONIFADE</span></h1>
+                <div class="hero-meta">
+                    <div class="hero-role hero-meta-item" aria-label="Domaine">
+                        <i class="fas fa-network-wired hero-icon"></i>
+                        <span>Administrateur réseau et système</span>
+                    </div>
+                    <div class="hero-school hero-meta-item" aria-label="Établissement">
+                        <i class="fas fa-graduation-cap hero-icon"></i>
+                        <span>SUPINFO Paris</span>
+                    </div>
+                </div>
+                <p class="hero-tagline" aria-label="Présentation">Je conçois et opère des infrastructures fiables et sécurisées.</p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">Me contacter</a>
                     <a href="#projets" class="btn btn-secondary">Voir mes projets</a>
