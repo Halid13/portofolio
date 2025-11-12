@@ -7,8 +7,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Animation du nom (hero)
     const heroNameEl = document.getElementById('hero-name');
     if (heroNameEl) {
-        typeWriter(heroNameEl, 'Mohamed ONIFADE', 55);
+        typeWriter(heroNameEl, 'Mohamed ONIFADE', 70);
     }
+    
+    // Effet parallax souris sur hero-content
+    setupParallax();
 
     // Gestion du scroll pour activer les liens de navigation
     window.addEventListener('scroll', function() {
@@ -221,3 +224,47 @@ function typeWriter(element, text, speed = 50) {
 }
 
 // Utilisation : typeWriter(document.querySelector('.hero-content h2'), 'Bienvenue sur mon Portfolio');
+
+// ========================================
+// PARALLAX MOUSE EFFECT
+// ========================================
+
+function setupParallax() {
+    const hero = document.querySelector('.hero');
+    const heroImage = document.querySelector('.profile-hero');
+    const heroContent = document.querySelector('.hero-content');
+    
+    if (!hero || !heroImage) return;
+    
+    hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const deltaX = (x - centerX) / centerX;
+        const deltaY = (y - centerY) / centerY;
+        
+        // Effet parallax subtil sur l'image
+        const moveX = deltaX * 15;
+        const moveY = deltaY * 15;
+        
+        heroImage.style.transform = `translate(${moveX}px, ${moveY}px) scale(1)`;
+        
+        // Effet parallax inverse sur le contenu (plus subtil)
+        if (heroContent) {
+            const contentMoveX = deltaX * -5;
+            const contentMoveY = deltaY * -5;
+            heroContent.style.transform = `translate(${contentMoveX}px, ${contentMoveY}px)`;
+        }
+    });
+    
+    hero.addEventListener('mouseleave', () => {
+        heroImage.style.transform = 'translate(0, 0) scale(1)';
+        if (heroContent) {
+            heroContent.style.transform = 'translate(0, 0)';
+        }
+    });
+}
