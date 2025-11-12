@@ -14,7 +14,48 @@
             <div class="navbar">
                 <div class="logo">
                     <a href="#accueil" class="brand">
-                        <span class="brand-mark">MO</span>
+                        <span class="brand-mark">
+                            <!-- Monogramme géométrique circulaire -->
+                            <svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <!-- Cercle extérieur -->
+                                <circle cx="25" cy="25" r="24" fill="none" stroke="#98C1D9" stroke-width="1.5" opacity="0.6"/>
+                                
+                                <!-- Cercle de base avec dégradé -->
+                                <defs>
+                                    <linearGradient id="monoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#E6EEF7" />
+                                        <stop offset="100%" stop-color="#3D5A80" />
+                                    </linearGradient>
+                                    <radialGradient id="monoRadial" cx="40%" cy="40%">
+                                        <stop offset="0%" stop-color="#E6EEF7" />
+                                        <stop offset="100%" stop-color="#3D5A80" />
+                                    </radialGradient>
+                                </defs>
+                                
+                                <!-- Fond circulaire principal -->
+                                <circle cx="25" cy="25" r="22" fill="url(#monoGradient)" />
+                                
+                                <!-- M géométrique -->
+                                <g transform="translate(12, 18)">
+                                    <!-- Ligne gauche de M -->
+                                    <line x1="1" y1="12" x2="1" y2="0" stroke="#E6EEF7" stroke-width="2.5" stroke-linecap="round"/>
+                                    <!-- Pic central de M -->
+                                    <line x1="1" y1="6" x2="5" y2="0" stroke="#E6EEF7" stroke-width="2.5" stroke-linecap="round"/>
+                                    <line x1="5" y1="0" x2="9" y2="6" stroke="#E6EEF7" stroke-width="2.5" stroke-linecap="round"/>
+                                    <!-- Ligne droite de M -->
+                                    <line x1="9" y1="12" x2="9" y2="0" stroke="#E6EEF7" stroke-width="2.5" stroke-linecap="round"/>
+                                </g>
+                                
+                                <!-- O géométrique -->
+                                <g transform="translate(23, 18)">
+                                    <circle cx="4" cy="6" r="4" fill="none" stroke="#E6EEF7" stroke-width="2.5"/>
+                                    <circle cx="4" cy="6" r="7" fill="none" stroke="#E6EEF7" stroke-width="1.5" opacity="0.4"/>
+                                </g>
+                                
+                                <!-- Accent point sur le O -->
+                                <circle cx="37" cy="18" r="1.2" fill="#3D5A80" opacity="0.85"/>
+                            </svg>
+                        </span>
                         <span class="brand-text">Mohamed ONIFADE</span>
                     </a>
                 </div>

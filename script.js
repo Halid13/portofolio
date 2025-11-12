@@ -196,6 +196,7 @@ adjustMenuForScreenSize();
 window.addEventListener('resize', adjustMenuForScreenSize);
 
 // ========================================
+
 // EFFECT DE TYPAGE OPTIONNEL (AVANCÉ)
 // ========================================
 
