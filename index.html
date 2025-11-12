@@ -81,7 +81,53 @@
 
     <!-- SECTION ACCUEIL -->
     <section id="accueil" class="hero">
-        <canvas id="constellation-canvas"></canvas>
+        <!-- Aurora minimaliste en arrière-plan -->
+        <div class="aurora" aria-hidden="true">
+            <span class="blob a1"></span>
+            <span class="blob a2"></span>
+            <span class="blob a3"></span>
+        </div>
+        <!-- Illustrations thématiques discrètes -->
+        <div class="hero-illustrations" aria-hidden="true">
+            <!-- Serveur -->
+            <svg class="illu illu-server" viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+                <rect x="10" y="10" width="80" height="30" rx="6"/>
+                <rect x="10" y="55" width="80" height="30" rx="6"/>
+                <rect x="10" y="100" width="80" height="30" rx="6"/>
+                <circle cx="24" cy="25" r="3"/>
+                <circle cx="24" cy="70" r="3"/>
+                <circle cx="24" cy="115" r="3"/>
+                <line x1="34" y1="25" x2="82" y2="25"/>
+                <line x1="34" y1="70" x2="82" y2="70"/>
+                <line x1="34" y1="115" x2="82" y2="115"/>
+            </svg>
+            <!-- Cloud -->
+            <svg class="illu illu-cloud" viewBox="0 0 160 100" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+                <path d="M50 70H130C145 70 152 60 152 50C152 38 143 30 132 30C130 17 120 8 105 8C90 8 80 18 78 30C72 27 65 26 58 28C45 31 36 41 36 55C36 64 41 70 50 70Z"/>
+            </svg>
+            <!-- Shield -->
+            <svg class="illu illu-shield" viewBox="0 0 110 140" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+                <path d="M55 10L90 22V62C90 89 76 106 55 120C34 106 20 89 20 62V22L55 10Z"/>
+                <path d="M55 31V95"/>
+                <path d="M36 58H74"/>
+            </svg>
+            <!-- Réseau -->
+            <svg class="illu illu-network" viewBox="0 0 150 120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+                <circle cx="30" cy="90" r="12"/>
+                <circle cx="120" cy="90" r="12"/>
+                <circle cx="75" cy="30" r="12"/>
+                <line x1="75" y1="42" x2="30" y2="78"/>
+                <line x1="75" y1="42" x2="120" y2="78"/>
+                <line x1="42" y1="90" x2="108" y2="90"/>
+            </svg>
+            <!-- Base de données -->
+            <svg class="illu illu-db" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+                <ellipse cx="60" cy="28" rx="40" ry="14"/>
+                <path d="M20 28V96C20 104 36 110 60 110C84 110 100 104 100 96V28"/>
+                <path d="M20 62C20 70 36 76 60 76C84 76 100 70 100 62"/>
+                <path d="M20 96C20 104 36 110 60 110C84 110 100 104 100 96"/>
+            </svg>
+        </div>
         <div class="container">
             <div class="hero-content">
                 <div class="hero-image">
@@ -98,7 +144,7 @@
                         <span>SUPINFO Paris</span>
                     </div>
                 </div>
-                <p class="hero-tagline" aria-label="Présentation">Je conçois et opère des infrastructures fiables et sécurisées.</p>
+                <p class="hero-tagline" aria-label="Présentation">Disponible à travailler avec vous sur vos infrastructures réseaux et systèmes.</p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">Me contacter</a>
                     <a href="#projets" class="btn btn-secondary">Voir mes projets</a>
@@ -416,7 +462,6 @@
         </div>
     </footer>
 
-    <script src="constellation.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
