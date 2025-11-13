@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" role="img" aria-label="Fortinet">
+  <rect width="80" height="80" rx="16" fill="#0F0F0F"/>
+  <rect x="16" y="26" width="12" height="28" fill="#E60012" rx="2"/>
+  <rect x="34" y="26" width="12" height="28" fill="#E60012" rx="2"/>
+  <rect x="52" y="26" width="12" height="28" fill="#E60012" rx="2"/>
+  <text x="40" y="70" font-size="14" font-family="Segoe UI, Arial" fill="#E60012" text-anchor="middle" font-weight="600">FORTINET</text>
+</svg>

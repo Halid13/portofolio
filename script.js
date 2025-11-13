@@ -372,56 +372,11 @@ function setupCertsCarousel() {
 
     const track = carousel.querySelector('.certs-track');
     if (!track) return;
-
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    // Dupliquer les éléments pour un défilement en continu
+    // Dupliquer les éléments pour remplir > 200% largeur (pour animation CSS)
     const items = Array.from(track.children);
     items.forEach(item => track.appendChild(item.cloneNode(true)));
 
-    let paused = false;
-    let speed = reduceMotion ? 0 : 0.7; // pixels par frame
-
-    function step() {
-        if (!paused && speed > 0) {
-            carousel.scrollLeft += speed;
-            const midpoint = track.scrollWidth / 2;
-            if (carousel.scrollLeft >= midpoint) {
-                carousel.scrollLeft = 0;
-            }
-        }
-        requestAnimationFrame(step);
-    }
-
-    step();
-
-    // Pause au survol
-    carousel.addEventListener('mouseenter', () => paused = true);
-    carousel.addEventListener('mouseleave', () => paused = false);
-
-    // Drag tactile / souris
-    let isDown = false;
-    let startX = 0;
-    let startScroll = 0;
-
-    carousel.addEventListener('pointerdown', (e) => {
-        isDown = true;
-        paused = true;
-        startX = e.clientX;
-        startScroll = carousel.scrollLeft;
-        carousel.setPointerCapture(e.pointerId);
-    });
-
-    carousel.addEventListener('pointermove', (e) => {
-        if (!isDown) return;
-        const dx = e.clientX - startX;
-        carousel.scrollLeft = startScroll - dx;
-    });
-
-    ['pointerup', 'pointercancel', 'pointerleave'].forEach(evt => {
-        carousel.addEventListener(evt, () => {
-            isDown = false;
-            paused = false;
-        });
-    });
+    // Pause au survol (toggle classe)
+    carousel.addEventListener('mouseenter', () => carousel.classList.add('paused'));
+    carousel.addEventListener('mouseleave', () => carousel.classList.remove('paused'));
 }
