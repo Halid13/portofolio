@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Rotation 3D au scroll
     setup3DScroll();
 
-    // Carrousel "Mon parcours"
-    setupJourneyCarousel();
+    // Frise chronologique "Mon parcours"
+    setupJourneyTimelineReveal();
 
     // Gestion du scroll pour activer les liens de navigation
     window.addEventListener('scroll', function() {
@@ -338,60 +338,18 @@ function setupParallax() {
 // CARROUSEL "MON PARCOURS"
 // ========================================
 
-function setupJourneyCarousel() {
-    const carousel = document.getElementById('journey-carousel');
-    if (!carousel) return;
+function setupJourneyTimelineReveal() {
+    const items = document.querySelectorAll('.jt-item');
+    if (!items.length) return;
 
-    const track = carousel.querySelector('.journey-track');
-    if (!track) return;
-
-    // Dupliquer les éléments pour un défilement en continu
-    const items = Array.from(track.children);
-    items.forEach(item => track.appendChild(item.cloneNode(true)));
-
-    let paused = false;
-    let speed = 0.6; // pixels par frame
-
-    function step() {
-        if (!paused) {
-            carousel.scrollLeft += speed;
-            const midpoint = track.scrollWidth / 2;
-            if (carousel.scrollLeft >= midpoint) {
-                carousel.scrollLeft = 0;
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                obs.unobserve(entry.target);
             }
-        }
-        requestAnimationFrame(step);
-    }
-
-    step();
-
-    // Pause au survol
-    carousel.addEventListener('mouseenter', () => paused = true);
-    carousel.addEventListener('mouseleave', () => paused = false);
-
-    // Drag tactile / souris
-    let isDown = false;
-    let startX = 0;
-    let startScroll = 0;
-
-    carousel.addEventListener('pointerdown', (e) => {
-        isDown = true;
-        paused = true;
-        startX = e.clientX;
-        startScroll = carousel.scrollLeft;
-        carousel.setPointerCapture(e.pointerId);
-    });
-
-    carousel.addEventListener('pointermove', (e) => {
-        if (!isDown) return;
-        const dx = e.clientX - startX;
-        carousel.scrollLeft = startScroll - dx;
-    });
-
-    ['pointerup', 'pointercancel', 'pointerleave'].forEach(evt => {
-        carousel.addEventListener(evt, () => {
-            isDown = false;
-            paused = false;
         });
-    });
+    }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
+
+    items.forEach(item => observer.observe(item));
 }
