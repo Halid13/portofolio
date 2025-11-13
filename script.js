@@ -342,6 +342,11 @@ function setupJourneyTimelineReveal() {
     const items = document.querySelectorAll('.jt-item');
     if (!items.length) return;
 
+    // Stagger initial delays for a smoother, elegant reveal
+    items.forEach((item, index) => {
+        item.style.transitionDelay = `${Math.min(index * 90, 360)}ms`;
+    });
+
     const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -349,7 +354,7 @@ function setupJourneyTimelineReveal() {
                 obs.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
+    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
 
     items.forEach(item => observer.observe(item));
 }

@@ -865,7 +865,7 @@ body {
 /* Mon parcours - timeline (nouveau design) */
 .journey-timeline {
     position: relative;
-    padding: 20px 0 10px;
+    padding: 24px 0 8px;
 }
 
 .jt-line {
@@ -874,9 +874,9 @@ body {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 2px;
+    width: 1.5px;
     background: linear-gradient(180deg, var(--accent-light), var(--secondary-color));
-    opacity: 0.35;
+    opacity: 0.25;
     border-radius: 2px;
 }
 
@@ -886,10 +886,10 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     align-items: start;
-    margin: 30px 0 50px;
+    margin: 36px 0 48px;
     opacity: 0;
     transform: translateY(16px);
-    transition: transform 0.6s ease, opacity 0.6s ease;
+    transition: transform 700ms cubic-bezier(.2,.8,.2,1), opacity 700ms cubic-bezier(.2,.8,.2,1);
 }
 
 .jt-item:nth-child(odd) .jt-card { grid-column: 1; justify-self: end; }
@@ -905,12 +905,12 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background: var(--bg-primary);
-    border: 3px solid var(--secondary-color);
-    box-shadow: 0 0 0 8px rgba(63,108,168,0.08);
+    border: 2px solid var(--secondary-color);
+    box-shadow: 0 0 0 6px rgba(63,108,168,0.08);
 }
 
 .jt-dot-inner {
@@ -919,7 +919,7 @@ body {
     height: 100%;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
-    animation: jtPulse 2.2s ease-in-out infinite;
+    animation: jtPulse 3s ease-in-out infinite;
 }
 
 @keyframes jtPulse {
@@ -930,57 +930,122 @@ body {
 .jt-card {
     background: var(--bg-primary);
     border: 1px solid var(--border-color);
-    border-radius: 14px;
-    padding: 22px;
-    box-shadow: 0 10px 30px rgba(11, 18, 32, 0.06);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(11, 18, 32, 0.05);
     max-width: 520px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
 }
 
 .jt-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 42px rgba(11, 18, 32, 0.12);
+    box-shadow: 0 16px 40px rgba(11, 18, 32, 0.10);
+    border-color: rgba(11, 18, 32, 0.10);
 }
 
 .jt-meta {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 8px;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(11, 18, 32, 0.06);
+    margin-bottom: 12px;
 }
 
 .jt-date { font-size: 12px; color: var(--text-muted); }
 
 .jt-badge {
     font-size: 11px;
-    background: rgba(63,108,168,0.12);
+    background: linear-gradient(180deg, rgba(63,108,168,0.12), rgba(63,108,168,0.08));
     color: var(--secondary-color);
     padding: 4px 8px;
     border-radius: 999px;
     font-weight: 700;
+    border: 1px solid rgba(63,108,168,0.25);
 }
 
 .jt-title {
     font-size: 18px;
     color: var(--primary-color);
     margin: 6px 0 2px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.jt-title i { color: var(--secondary-color); margin-right: 8px; }
+.jt-title i {
+    color: var(--secondary-color);
+    margin-right: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-light);
+    border: 1px solid rgba(63,108,168,0.25);
+    box-shadow: 0 2px 8px rgba(11, 18, 32, 0.06);
+    flex-shrink: 0;
+}
 
-.jt-org { font-size: 14px; color: var(--secondary-color); font-weight: 600; margin-bottom: 10px; }
-.jt-desc { font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 12px; }
+.jt-org {
+    font-size: 14px;
+    color: var(--secondary-color);
+    font-weight: 600;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 12px;
+}
+.jt-org::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--secondary-color);
+    opacity: 0.35;
+}
+.jt-desc {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
 
 .jt-tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .jt-tags .tag {
     display: inline-block;
     font-size: 11px;
-    padding: 6px 10px;
+    padding: 6px 12px;
     border-radius: 999px;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    color: var(--text-muted);
+    background: linear-gradient(180deg, var(--bg-primary), rgba(230,238,247,0.6));
+    border: 1px solid rgba(63,108,168,0.15);
+    color: rgba(11, 18, 32, 0.75);
     font-weight: 700;
+    transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+.jt-tags .tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(11, 18, 32, 0.08);
+    border-color: rgba(63,108,168,0.35);
+    color: var(--primary-color);
+}
+.jt-card:focus-within {
+    outline: 3px solid rgba(63,108,168,0.25);
+    outline-offset: 2px;
+}
+@media (max-width: 480px) {
+    .jt-desc {
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 }
 
 /* Responsive timeline */
@@ -989,13 +1054,19 @@ body {
 }
 
 @media (max-width: 768px) {
-    .jt-line { left: 28px; transform: translateX(-50%); }
+    .jt-line { left: 26px; transform: translateX(-50%); }
     .jt-item {
         grid-template-columns: 1fr;
         margin: 24px 0 36px;
     }
     .jt-item .jt-card { grid-column: 1; justify-self: stretch; }
-    .jt-dot { left: 28px; }
+    .jt-dot { left: 26px; }
+}
+
+/* Accessibilité: réduire l’animation si demandé */
+@media (prefers-reduced-motion: reduce) {
+    .jt-item { transition: none; }
+    .jt-dot-inner { animation: none; }
 }
 /* Section CV - Design épuré et moderne */
 .about-cv {
