@@ -928,19 +928,50 @@ body {
 }
 
 .jt-card {
-    background: var(--bg-primary);
-    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid transparent;
     border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 8px 24px rgba(11, 18, 32, 0.05);
+    box-shadow: 
+        0 8px 24px rgba(11, 18, 32, 0.06),
+        0 2px 8px rgba(11, 18, 32, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
     max-width: 520px;
+    position: relative;
     transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
+}
+.jt-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 1px;
+    background: linear-gradient(135deg, 
+        rgba(63,108,168,0.25) 0%, 
+        rgba(152,193,217,0.15) 50%, 
+        rgba(63,108,168,0.25) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
 }
 
 .jt-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(11, 18, 32, 0.10);
-    border-color: rgba(11, 18, 32, 0.10);
+    box-shadow: 
+        0 16px 48px rgba(11, 18, 32, 0.12),
+        0 4px 16px rgba(63, 108, 168, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 1),
+        0 0 0 1px rgba(63,108,168,0.15);
+}
+.jt-card:hover::before {
+    background: linear-gradient(135deg, 
+        rgba(63,108,168,0.4) 0%, 
+        rgba(152,193,217,0.25) 50%, 
+        rgba(63,108,168,0.4) 100%);
 }
 
 .jt-meta {
@@ -957,12 +988,15 @@ body {
 
 .jt-badge {
     font-size: 11px;
-    background: linear-gradient(180deg, rgba(63,108,168,0.12), rgba(63,108,168,0.08));
+    background: linear-gradient(135deg, rgba(63,108,168,0.15), rgba(63,108,168,0.08));
     color: var(--secondary-color);
     padding: 4px 8px;
     border-radius: 999px;
     font-weight: 700;
     border: 1px solid rgba(63,108,168,0.25);
+    box-shadow: 
+        0 2px 6px rgba(11, 18, 32, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .jt-title {
@@ -984,10 +1018,19 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: var(--accent-light);
+    background: linear-gradient(135deg, rgba(230,238,247,0.95), rgba(230,238,247,0.7));
     border: 1px solid rgba(63,108,168,0.25);
-    box-shadow: 0 2px 8px rgba(11, 18, 32, 0.06);
+    box-shadow: 
+        0 2px 8px rgba(11, 18, 32, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
     flex-shrink: 0;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.jt-card:hover .jt-title i {
+    transform: scale(1.05);
+    box-shadow: 
+        0 4px 12px rgba(11, 18, 32, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
 }
 
 .jt-org {
@@ -1022,17 +1065,23 @@ body {
     font-size: 11px;
     padding: 6px 12px;
     border-radius: 999px;
-    background: linear-gradient(180deg, var(--bg-primary), rgba(230,238,247,0.6));
-    border: 1px solid rgba(63,108,168,0.15);
+    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(230,238,247,0.7));
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(63,108,168,0.18);
     color: rgba(11, 18, 32, 0.75);
     font-weight: 700;
+    box-shadow: 0 2px 6px rgba(11, 18, 32, 0.04);
     transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease, color 200ms ease;
 }
 .jt-tags .tag:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(11, 18, 32, 0.08);
+    box-shadow: 
+        0 6px 18px rgba(11, 18, 32, 0.10),
+        0 2px 8px rgba(63, 108, 168, 0.08);
     border-color: rgba(63,108,168,0.35);
     color: var(--primary-color);
+    background: linear-gradient(135deg, rgba(255,255,255,1), rgba(230,238,247,0.85));
 }
 .jt-card:focus-within {
     outline: 3px solid rgba(63,108,168,0.25);
