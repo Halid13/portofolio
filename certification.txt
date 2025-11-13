@@ -1,0 +1,5 @@
+AWS : AWS_Academy_Graduate-Cloud_Architecting
+Fortinet : Fortinet-Certified_Associate_Cybersecurity
+Cisco : Cisco-Computer_Hardware_Basics
+Cisco : Cisco-Network_Addressing_and_Basic_Troubleshooting
+Cloud : SimpliLearn-Introduction_to_Cloud_Computing

@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Frise chronologique "Mon parcours"
     setupJourneyTimelineReveal();
 
+    // Carrousel "Certifications" (défilement continu)
+    setupCertsCarousel();
+
     // Gestion du scroll pour activer les liens de navigation
     window.addEventListener('scroll', function() {
         let currentSection = '';
@@ -357,4 +360,68 @@ function setupJourneyTimelineReveal() {
     }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
 
     items.forEach(item => observer.observe(item));
+}
+
+// ========================================
+// CARROUSEL "CERTIFICATIONS" (défilement continu)
+// ========================================
+
+function setupCertsCarousel() {
+    const carousel = document.getElementById('certs-carousel');
+    if (!carousel) return;
+
+    const track = carousel.querySelector('.certs-track');
+    if (!track) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Dupliquer les éléments pour un défilement en continu
+    const items = Array.from(track.children);
+    items.forEach(item => track.appendChild(item.cloneNode(true)));
+
+    let paused = false;
+    let speed = reduceMotion ? 0 : 0.7; // pixels par frame
+
+    function step() {
+        if (!paused && speed > 0) {
+            carousel.scrollLeft += speed;
+            const midpoint = track.scrollWidth / 2;
+            if (carousel.scrollLeft >= midpoint) {
+                carousel.scrollLeft = 0;
+            }
+        }
+        requestAnimationFrame(step);
+    }
+
+    step();
+
+    // Pause au survol
+    carousel.addEventListener('mouseenter', () => paused = true);
+    carousel.addEventListener('mouseleave', () => paused = false);
+
+    // Drag tactile / souris
+    let isDown = false;
+    let startX = 0;
+    let startScroll = 0;
+
+    carousel.addEventListener('pointerdown', (e) => {
+        isDown = true;
+        paused = true;
+        startX = e.clientX;
+        startScroll = carousel.scrollLeft;
+        carousel.setPointerCapture(e.pointerId);
+    });
+
+    carousel.addEventListener('pointermove', (e) => {
+        if (!isDown) return;
+        const dx = e.clientX - startX;
+        carousel.scrollLeft = startScroll - dx;
+    });
+
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach(evt => {
+        carousel.addEventListener(evt, () => {
+            isDown = false;
+            paused = false;
+        });
+    });
 }
