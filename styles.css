@@ -659,9 +659,29 @@ body {
     margin-bottom: 28px;
 }
 
+.intro-profile-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--secondary-color);
+    box-shadow: 
+        0 0 0 4px rgba(63, 108, 168, 0.1),
+        0 4px 12px rgba(11, 18, 32, 0.12);
+    transition: all 0.3s ease;
+}
+
+.intro-profile-img:hover {
+    transform: scale(1.08);
+    box-shadow: 
+        0 0 0 6px rgba(63, 108, 168, 0.15),
+        0 6px 18px rgba(11, 18, 32, 0.18);
+}
+
 .intro-header i {
     font-size: 38px;
     color: var(--secondary-color);
+    display: none; /* Caché car remplacé par l'image */
 }
 
 .intro-header h3 {
