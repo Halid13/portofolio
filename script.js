@@ -22,6 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Carrousel "Certifications" (défilement continu)
     setupCertsCarousel();
 
+    // Interactions 3D sur cartes compétences (futuriste)
+    setupSkillCards3D();
+
     // Gestion du scroll pour activer les liens de navigation
     window.addEventListener('scroll', function() {
         let currentSection = '';
@@ -380,3 +383,60 @@ function setupCertsCarousel() {
     carousel.addEventListener('mouseenter', () => carousel.classList.add('paused'));
     carousel.addEventListener('mouseleave', () => carousel.classList.remove('paused'));
 }
+
+// ========================================
+// INTERACTIONS 3D CARTES COMPÉTENCES (FUTURISTE)
+// ========================================
+
+function setupSkillCards3D() {
+    const cards = document.querySelectorAll('.skill-card');
+    if (!cards.length) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return; // Respect accessibility
+
+    cards.forEach(card => {
+        const glow = card.querySelector('.sc-glow');
+
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const deltaX = (x - centerX) / centerX;
+            const deltaY = (y - centerY) / centerY;
+
+            // Rotation 3D (tilt) proportionnelle à la distance du centre
+            const rotateY = deltaX * 12; // max ±12deg
+            const rotateX = -deltaY * 12;
+
+            card.style.transform = `
+                perspective(1000px) 
+                rotateX(${rotateX}deg) 
+                rotateY(${rotateY}deg) 
+                translateY(-8px) 
+                scale(1.02)
+            `;
+
+            // Position du glow interne qui suit la souris
+            if (glow) {
+                const mouseXPercent = (x / rect.width) * 100;
+                const mouseYPercent = (y / rect.height) * 100;
+                card.style.setProperty('--mouse-x', `${mouseXPercent}%`);
+                card.style.setProperty('--mouse-y', `${mouseYPercent}%`);
+            }
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+            if (glow) {
+                card.style.setProperty('--mouse-x', '50%');
+                card.style.setProperty('--mouse-y', '50%');
+            }
+        });
+    });
+}
+

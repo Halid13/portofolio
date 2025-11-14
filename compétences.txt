@@ -1,0 +1,17 @@
+compétences
+
+
+Windows Server 2012 / 2016, VMWare 
+ESXi,Hyper-V, Linux, AWS, Microsoft 
+AzureAD, Python, SQL, Node.js, React Native, JavaScript, HTML/CSS 
+TypeScript, Ansible, Docker, Intune, Windows 10/11, Entra ID, SSH, 
+WSUS, RDP, Oracle, GLPI, Zabbix, 
+AnyDesk, VEEAM, FTP, OneDrive, TCP/IP, Packet Tracer, GNS3
+Android, iOS, Teams, HelpDesk, TeamViewer, Excel, 
+Postman, React, Cisco Switchs /Routage, TCP/IP, DNS, 
+DHCP, OSPF, Active Directory, Fortinet, 
+LAN, WLAN, VLANs / Firewall / VPN, Gestion Projet, Installation
+IMAP, Wifi, Kubernetes, Powershell, Bash, 
+ZTNA, Debian, vSphere, Office 365, HPE 
+Aruba, Adressage IP, VoIP, Cloud, AS400, câblage, Trunking, 
+Git, Kaspersky, Terraform, Meraki, SNMP, Zabbix, GPO
