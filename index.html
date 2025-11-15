@@ -305,6 +305,28 @@
                             </div>
                         </article>
 
+                        <article class="cert-card" data-provider="Cisco">
+                            <div class="ci-icon brand-cisco" title="Cisco">
+                                <img src="images/logos/cisco.png" alt="Logo Cisco" class="ci-logo" loading="lazy" />
+                            </div>
+                            <div class="ci-content">
+                                <h4 class="ci-title">Switching, Routing, and Wireless Essentials</h4>
+                                <p class="ci-sub">CCNA</p>
+                                <span class="ci-badge">Cisco</span>
+                            </div>
+                        </article>
+
+                        <article class="cert-card" data-provider="Cisco">
+                            <div class="ci-icon brand-cisco" title="Cisco">
+                                <img src="images/logos/cisco.png" alt="Logo Cisco" class="ci-logo" loading="lazy" />
+                            </div>
+                            <div class="ci-content">
+                                <h4 class="ci-title">Enterprise Networking, Security, and Automation</h4>
+                                <p class="ci-sub">CCNA</p>
+                                <span class="ci-badge">Cisco</span>
+                            </div>
+                        </article>
+
                         <!-- Cisco Addressing & Troubleshooting -->
                         <article class="cert-card" data-provider="Cisco">
                             <div class="ci-icon brand-cisco" title="Cisco">
@@ -508,95 +530,235 @@
         <div class="container">
             <h2 class="section-title">Mes Projets</h2>
             <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Infrastructure Serveur</h3>
-                        <p>Configuration et déploiement d'une infrastructure serveur avec Linux, virtualisation et haute disponibilité.</p>
-                        <div class="project-tags">
-                            <span class="tag">Linux</span>
-                            <span class="tag">Proxmox</span>
-                            <span class="tag">Infrastructure</span>
+                <!-- Projet 1: Cisco Firepower -->
+                <article class="proj-card" data-proj="cisco-firepower">
+                    <header class="proj-header">
+                        <div class="proj-leading">
+                            <img src="images/logos/cisco.svg" alt="Cisco" class="proj-logo" onerror="this.replaceWith(Object.assign(document.createElement('i'),{className:'fas fa-shield-alt'}))" />
+                        </div>
+                        <div class="proj-heading">
+                            <h3 class="proj-title">Réinitialisation et mise à jour d’un Cisco Firepower FPR-1120</h3>
+                            <p class="proj-meta"><span class="org">ACXS IT</span> • Juin 2025 – Septembre 2025</p>
+                        </div>
+                        <button class="proj-toggle" aria-expanded="false" aria-controls="proj-c1" title="Afficher plus">
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                    </header>
+                    <p class="proj-summary">Réinitialisation complète et remise en service du pare-feu Cisco Firepower FPR-1120 avec restauration des flux critiques.</p>
+                    <div id="proj-c1" class="proj-details" hidden>
+                        <div class="detail-block">
+                            <h4>Objectif</h4>
+                            <p>Remettre en service un pare-feu Cisco Firepower en panne et restaurer la sécurité du réseau.</p>
+                        </div>
+                        <div class="detail-block">
+                            <h4>Travaux réalisés</h4>
+                            <ul>
+                                <li>Réinitialisation complète du Firepower FPR-1120.</li>
+                                <li>Recherche et installation de l’image compatible “cisco-asa-fp1k.9.23.1.SPA”.</li>
+                                <li>Remise en service du firewall et vérification des flux.</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h4>Impact</h4>
+                            <ul>
+                                <li>Restauration de 100 % des capacités de sécurité réseau.</li>
+                                <li>Réduction du temps d’indisponibilité de 2 jours à quelques heures.</li>
+                                <li>Amélioration de la stabilité du trafic réseau.</li>
+                            </ul>
+                        </div>
+                        <div class="proj-tags">
+                            <span class="tag">Cisco ASA</span>
+                            <span class="tag">Cisco Firepower</span>
+                            <span class="tag">CLI Cisco</span>
+                            <span class="tag">Réinstallation</span>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Sécurité Réseau</h3>
-                        <p>Mise en place d'une politique de sécurité réseau, configuration de firewalls et VPN.</p>
-                        <div class="project-tags">
-                            <span class="tag">Sécurité</span>
-                            <span class="tag">Firewall</span>
-                            <span class="tag">VPN</span>
+                <!-- Projet 2: LinkUp Azure -->
+                <article class="proj-card" data-proj="linkup-azure">
+                    <header class="proj-header">
+                        <div class="proj-leading"><img src="images/logos/azure.svg" alt="Azure" class="proj-logo" onerror="this.replaceWith(Object.assign(document.createElement('i'),{className:'fas fa-cloud'}))" /></div>
+                        <div class="proj-heading">
+                            <h3 class="proj-title">Développement du réseau social sécurisé LinkUp sur Azure</h3>
+                            <p class="proj-meta"><span class="org">SUPINFO</span> • Novembre 2024 – Décembre 2024</p>
                         </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Gestion de Base de Données</h3>
-                        <p>Administrations et optimisations de bases de données avec sauvegarde et récupération.</p>
-                        <div class="project-tags">
-                            <span class="tag">Database</span>
-                            <span class="tag">Backup</span>
-                            <span class="tag">SQL</span>
+                        <button class="proj-toggle" aria-expanded="false" aria-controls="proj-c2" title="Afficher plus">
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                    </header>
+                    <p class="proj-summary">Réseau social sécurisé inspiré d’Instagram, hébergé sur Azure, avec APIs Python et management centralisé via Azure API Management.</p>
+                    <div id="proj-c2" class="proj-details" hidden>
+                        <div class="detail-block">
+                            <h4>Objectif</h4>
+                            <p>Créer un réseau social sécurisé, inspiré d’Instagram, entièrement hébergé sur Azure.</p>
                         </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-docker"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Containerisation Docker</h3>
-                        <p>Déploiement d'applications en conteneurs avec Docker et Docker Compose.</p>
-                        <div class="project-tags">
-                            <span class="tag">Docker</span>
-                            <span class="tag">Container</span>
-                            <span class="tag">DevOps</span>
+                        <div class="detail-block">
+                            <h4>Travaux réalisés</h4>
+                            <ul>
+                                <li>Architecture cloud sécurisée.</li>
+                                <li>Développement des API en Python.</li>
+                                <li>Centralisation via Azure API Management.</li>
+                                <li>Mise en place d’Azure SQL optimisée.</li>
+                                <li>Authentification, publications, feed utilisateurs.</li>
+                            </ul>
                         </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Monitoring et Supervision</h3>
-                        <p>Mise en place de solutions de monitoring pour surveiller l'infrastructure.</p>
-                        <div class="project-tags">
-                            <span class="tag">Monitoring</span>
-                            <span class="tag">Supervision</span>
-                            <span class="tag">Nagios</span>
+                        <div class="detail-block">
+                            <h4>Impact</h4>
+                            <ul>
+                                <li>Réduction de 40 % des risques de failles.</li>
+                                <li>+25 % de performances backend grâce aux optimisations Python.</li>
+                                <li>Échanges 100 % sécurisés via Azure et API Management.</li>
+                            </ul>
                         </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Automation & Scripting</h3>
-                        <p>Automatisation des tâches administratives avec scripts Bash et Python.</p>
-                        <div class="project-tags">
-                            <span class="tag">Bash</span>
+                        <div class="proj-tags">
+                            <span class="tag">Azure</span>
+                            <span class="tag">API Management</span>
+                            <span class="tag">Azure SQL</span>
                             <span class="tag">Python</span>
-                            <span class="tag">Automation</span>
+                            <span class="tag">REST API</span>
                         </div>
                     </div>
-                </div>
+                </article>
+
+                <!-- Projet 3: Accès AD & iVMS -->
+                <article class="proj-card" data-proj="ad-ivms">
+                    <header class="proj-header">
+                        <div class="proj-leading"><img src="images/logos/active-directory.svg" alt="Active Directory" class="proj-logo" onerror="this.replaceWith(Object.assign(document.createElement('i'),{className:'fas fa-user-shield'}))" /></div>
+                        <div class="proj-heading">
+                            <h3 class="proj-title">Gestion des accès réseau et physiques via Active Directory & iVMS</h3>
+                            <p class="proj-meta"><span class="org">EPITECH</span> • Février 2023 – Janvier 2024</p>
+                        </div>
+                        <button class="proj-toggle" aria-expanded="false" aria-controls="proj-c3" title="Afficher plus">
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                    </header>
+                    <p class="proj-summary">Automatisation de la gestion des accès utilisateurs (réseau et physiques) via Active Directory et iVMS.</p>
+                    <div id="proj-c3" class="proj-details" hidden>
+                        <div class="detail-block">
+                            <h4>Objectif</h4>
+                            <p>Automatiser la gestion des accès physiques et réseau des employés.</p>
+                        </div>
+                        <div class="detail-block">
+                            <h4>Travaux réalisés</h4>
+                            <ul>
+                                <li>Gestion des comptes dans Active Directory.</li>
+                                <li>Configuration des droits d’accès réseau.</li>
+                                <li>Création des badges d’accès.</li>
+                                <li>Paramétrage des autorisations via iVMS.</li>
+                                <li>Vérification des accès au bâtiment.</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h4>Impact</h4>
+                            <ul>
+                                <li>Gestion automatisée de plus de 80 utilisateurs.</li>
+                                <li>Réduction de 60 % des demandes de support liées aux accès.</li>
+                                <li>Contrôle d’accès centralisé renforçant la sécurité.</li>
+                            </ul>
+                        </div>
+                        <div class="proj-tags">
+                            <span class="tag">Active Directory</span>
+                            <span class="tag">Windows Server 2016</span>
+                            <span class="tag">iVMS</span>
+                            <span class="tag">RFID</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Projet 4: Imprimante d’entreprise -->
+                <article class="proj-card" data-proj="printer-docs">
+                    <header class="proj-header">
+                        <div class="proj-leading"><i class="fas fa-print"></i></div>
+                        <div class="proj-heading">
+                            <h3 class="proj-title">Mise en réseau et documentation de l’imprimante d’entreprise</h3>
+                            <p class="proj-meta"><span class="org">EPITECH</span> • Février 2023 – Janvier 2024</p>
+                        </div>
+                        <button class="proj-toggle" aria-expanded="false" aria-controls="proj-c4" title="Afficher plus">
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                    </header>
+                    <p class="proj-summary">Solution d’impression centralisée documentée pour tous les employés, avec tests, déploiement et base de connaissance.</p>
+                    <div id="proj-c4" class="proj-details" hidden>
+                        <div class="detail-block">
+                            <h4>Objectif</h4>
+                            <p>Créer une solution d’impression centralisée et documentée pour tous les employés.</p>
+                        </div>
+                        <div class="detail-block">
+                            <h4>Travaux réalisés</h4>
+                            <ul>
+                                <li>Configuration réseau de l’imprimante.</li>
+                                <li>Installation sur les postes utilisateurs.</li>
+                                <li>Tests d’impression et validation.</li>
+                                <li>Documentation d’installation et de dépannage.</li>
+                                <li>Ajout à la base de connaissance interne.</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h4>Impact</h4>
+                            <ul>
+                                <li>Accès simplifié à l’impression pour 50+ employés.</li>
+                                <li>Réduction de 70 % des tickets liés aux imprimantes.</li>
+                                <li>Procédure réutilisable intégrée à la base de connaissances.</li>
+                            </ul>
+                        </div>
+                        <div class="proj-tags">
+                            <span class="tag">Windows Server</span>
+                            <span class="tag">TCP/IP</span>
+                            <span class="tag">Documentation</span>
+                            <span class="tag">Support</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Projet 5: VoIP Asterisk -->
+                <article class="proj-card" data-proj="voip-asterisk">
+                    <header class="proj-header">
+                        <div class="proj-leading"><img src="images/logos/asterisk.svg" alt="Asterisk" class="proj-logo" onerror="this.replaceWith(Object.assign(document.createElement('i'),{className:'fas fa-phone'}))" /></div>
+                        <div class="proj-heading">
+                            <h3 class="proj-title">Mise en place d’un réseau VoIP performant et sécurisé avec Asterisk</h3>
+                            <p class="proj-meta"><span class="org">SUPINFO</span> • Novembre 2025</p>
+                        </div>
+                        <button class="proj-toggle" aria-expanded="false" aria-controls="proj-c5" title="Afficher plus">
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                    </header>
+                    <p class="proj-summary">Déploiement d’un système de téléphonie VoIP sécurisé basé sur Asterisk, avec Fail2ban, dialplan structuré et voicemails.</p>
+                    <div id="proj-c5" class="proj-details" hidden>
+                        <div class="detail-block">
+                            <h4>Objectif</h4>
+                            <p>Déployer un système de téléphonie VoIP local, sécurisé et opérationnel, basé sur Asterisk sur une VM dédiée.</p>
+                        </div>
+                        <div class="detail-block">
+                            <h4>Travaux réalisés</h4>
+                            <ul>
+                                <li>Installation et configuration d’un serveur Asterisk.</li>
+                                <li>Mise en place de Fail2ban contre les attaques SIP.</li>
+                                <li>Création d’un dialplan structuré.</li>
+                                <li>Templates d’utilisateurs pour déploiement rapide.</li>
+                                <li>Mise en place des voicemails.</li>
+                                <li>Communication inter-départements.</li>
+                            </ul>
+                        </div>
+                        <div class="detail-block">
+                            <h4>Impact</h4>
+                            <ul>
+                                <li>Téléphonie VoIP fonctionnelle pour 40+ utilisateurs.</li>
+                                <li>−80 % de risques d’intrusions SIP grâce à Fail2ban.</li>
+                                <li>+35 % de rapidité des communications internes.</li>
+                                <li>Standardisation des nouveaux comptes utilisateurs.</li>
+                            </ul>
+                        </div>
+                        <div class="proj-tags">
+                            <span class="tag">Asterisk</span>
+                            <span class="tag">Fail2ban</span>
+                            <span class="tag">SIP</span>
+                            <span class="tag">Dialplan</span>
+                            <span class="tag">Linux</span>
+                            <span class="tag">Voicemail</span>
+                        </div>
+                    </div>
+                </article>
             </div>
         </div>
     </section>

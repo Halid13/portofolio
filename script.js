@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Interactions 3D sur cartes compétences (futuriste)
     setupSkillCards3D();
 
+    // Cartes projets dépliantes
+    setupProjectCards();
+
     // Gestion du scroll pour activer les liens de navigation
     window.addEventListener('scroll', function() {
         let currentSection = '';
@@ -139,7 +142,7 @@ const observer = new IntersectionObserver(function(entries) {
 }, observerOptions);
 
 // Observer tous les skill cards et project cards
-document.querySelectorAll('.skill-card, .project-card, .info-item').forEach(el => {
+document.querySelectorAll('.skill-card, .project-card, .proj-card, .info-item').forEach(el => {
     el.style.opacity = '0';
     observer.observe(el);
 });
@@ -435,6 +438,108 @@ function setupSkillCards3D() {
             if (glow) {
                 card.style.setProperty('--mouse-x', '50%');
                 card.style.setProperty('--mouse-y', '50%');
+            }
+        });
+    });
+}
+
+// ========================================
+// CARTES PROJETS DÉPLIANTES
+// ========================================
+
+function setupProjectCards() {
+    const cards = document.querySelectorAll('.proj-card');
+    if (!cards.length) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Store all expand/collapse functions
+    const cardControls = [];
+
+    cards.forEach((card, cardIndex) => {
+        const toggle = card.querySelector('.proj-toggle');
+        const details = card.querySelector('.proj-details');
+        if (!toggle || !details) return;
+
+        const chevron = toggle.querySelector('i');
+
+        function expand() {
+            card.classList.add('open');
+            toggle.setAttribute('aria-expanded', 'true');
+            details.hidden = false;
+            if (!reduceMotion) {
+                // Transition via max-height
+                details.style.maxHeight = details.scrollHeight + 'px';
+            } else {
+                details.style.maxHeight = 'none';
+            }
+        }
+
+        function collapse() {
+            card.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+            if (!reduceMotion) {
+                // Set to current height then to 0 for smooth collapse
+                details.style.maxHeight = details.scrollHeight + 'px';
+                // force reflow
+                void details.offsetHeight;
+                details.style.maxHeight = '0px';
+                const onEnd = (e) => {
+                    if (e.target !== details) return;
+                    details.hidden = true;
+                    details.removeEventListener('transitionend', onEnd);
+                };
+                details.addEventListener('transitionend', onEnd);
+            } else {
+                details.hidden = true;
+                details.style.maxHeight = '0px';
+            }
+        }
+
+        // Store controls for this card
+        cardControls.push({ expand, collapse, toggle });
+
+        toggle.addEventListener('click', () => {
+            const expanded = toggle.getAttribute('aria-expanded') === 'true';
+            
+            if (expanded) {
+                // Just collapse this card
+                collapse();
+            } else {
+                // Accordion: close all other cards first
+                cardControls.forEach((ctrl, idx) => {
+                    if (idx !== cardIndex && ctrl.toggle.getAttribute('aria-expanded') === 'true') {
+                        ctrl.collapse();
+                    }
+                });
+                // Then expand this card
+                expand();
+            }
+        });
+
+        // Mouse move glow effect
+        if (!reduceMotion) {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const mouseXPercent = (x / rect.width) * 100;
+                const mouseYPercent = (y / rect.height) * 100;
+                card.style.setProperty('--mouse-x', `${mouseXPercent}%`);
+                card.style.setProperty('--mouse-y', `${mouseYPercent}%`);
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.setProperty('--mouse-x', '50%');
+                card.style.setProperty('--mouse-y', '50%');
+            });
+        }
+
+        // Optional: close on Escape when focused inside
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                collapse();
+                toggle.focus();
             }
         });
     });

@@ -1,0 +1,145 @@
+Projet :
+
+---
+
+## 🚀 **Réinitialisation et mise à jour d’un Cisco Firepower FPR-1120**
+
+**ACXS IT — Juin 2025 à Septembre 2025**
+
+### 🎯 **Objectif du projet**
+
+Remettre en service un pare-feu Cisco Firepower en panne et restaurer la sécurité du réseau.
+
+### 🛠️ **Travaux réalisés**
+
+* Réinitialisation complète du Firepower FPR-1120.
+* Recherche et installation de l’image compatible **“cisco-asa-fp1k.9.23.1.SPA”**.
+* Remise en service du firewall et vérification des flux.
+
+### 📈 **Impact**
+
+* 🔒 **Restauration de 100 % des capacités de sécurité réseau** après une panne critique.
+* ⚙️ **Réduction du temps d’indisponibilité du firewall de 2 jours à quelques heures**.
+* 📡 **Amélioration de la stabilité du trafic réseau** pour l’ensemble des utilisateurs de l’entreprise.
+
+### 🛠️ **Technologies & outils**
+
+Cisco ASA • Cisco Firepower • CLI Cisco • Procédures de réinstallation
+
+---
+
+## 🔐 **Développement du réseau social sécurisé LinkUp sur Azure**
+
+**SUPINFO — Novembre 2024 à Décembre 2024**
+
+### 🎯 **Objectif du projet**
+
+Créer un réseau social sécurisé, inspiré d’Instagram, entièrement hébergé sur Azure.
+
+### 🛠️ **Travaux réalisés**
+
+* Conception et mise en place d’une architecture cloud sécurisée.
+* Développement des API en **Python**.
+* Centralisation et gestion des API via **Azure API Management**.
+* Mise en place d’une base **Azure SQL** optimisée.
+* Création du système d'authentification, publications, feed utilisateurs, etc.
+
+### 📈 **Impact**
+
+* ☁️ **Architecture réduisant de 40 % les risques de failles grâce à Azure API Management**.
+* ⚡ **Amélioration des performances backend de 25 % grâce à l’optimisation des API Python**.
+* 🔐 **100 % des échanges sécurisés grâce au cloud Azure et au management centralisé des API**.
+
+### 🛠️ **Technologies & outils**
+
+Azure • API Management • Azure SQL • Python • REST API
+
+---
+
+## 🏢 **Gestion des accès réseau et physiques via Active Directory & iVMS**
+
+**EPITECH — Février 2023 à Janvier 2024**
+
+### 🎯 **Objectif du projet**
+
+Automatiser la gestion des accès physiques et réseau des employés.
+
+### 🛠️ **Travaux réalisés**
+
+* Création / gestion des comptes dans **Active Directory**.
+* Configuration des droits d’accès réseau.
+* Création des badges d’accès.
+* Paramétrage des autorisations via **iVMS** (HIKVISION).
+* Vérification des accès au bâtiment.
+
+### 📈 **Impact**
+
+* 👥 **Gestion automatisée de plus de 80 utilisateurs** via Active Directory.
+* 🔐 **Réduction de 60 % des demandes de support liées aux accès physiques**.
+* 🏢 **Amélioration de la sécurité du bâtiment grâce à un contrôle d’accès centralisé**.
+
+### 🛠️ **Technologies & outils**
+
+Active Directory • Windows Server 2016 • iVMS • RFID Access Control
+
+---
+
+## 🖨️ **Mise en réseau et documentation de l’imprimante d’entreprise**
+
+**EPITECH — Février 2023 à Janvier 2024**
+
+### 🎯 **Objectif du projet**
+
+Créer une solution d’impression centralisée et documentée pour tous les employés.
+
+### 🛠️ **Travaux réalisés**
+
+* Configuration réseau de l’imprimante.
+* Installation sur les postes utilisateurs.
+* Tests d’impression et validation.
+* Rédaction de la documentation d’installation et de dépannage.
+* Ajout à la base de connaissance interne.
+
+### 📈 **Impact**
+
+* 🖨️ **Accès simplifié à l'impression pour 50+ employés**.
+* ⏱️ **Réduction de 70 % des tickets liés aux problèmes d’imprimante** grâce à la documentation.
+* 📘 **Création d’une procédure réutilisable, intégrée à la base de connaissances**.
+
+### 🛠️ **Technologies & outils**
+
+Windows Server • Réseau TCP/IP • Documentation technique • Support utilisateurs
+
+---
+
+## 📞 **Mise en place d’un réseau VoIP performant et sécurisé avec Asterisk**
+
+**SUPINFO — Novembre 2025**
+
+### 🎯 **Objectif du projet**
+
+Déployer un système de téléphonie VoIP local, sécurisé et entièrement opérationnel, basé sur **Asterisk** installé sur une machine virtuelle dédiée.
+
+### 🛠️ **Travaux réalisés**
+
+* Installation et configuration d’un serveur Asterisk sur une VM standalone.
+* Mise en place d’un **Fail2ban** pour protéger le système contre les attaques SIP et brute-force.
+* Création d’un **dialplan** structuré pour gérer les appels internes et inter-services.
+* Conception de **templates d’utilisateurs** afin de simplifier la gestion et le déploiement de nouveaux comptes VoIP.
+* Mise en place des **voicemails** pour chaque utilisateur.
+* Configuration de la **communication inter-départements**, permettant des appels fluides et hiérarchisés.
+
+### 📈 **Impact**
+
+* 📞 **Téléphonie VoIP fonctionnelle pour plus de 40 utilisateurs** internes.
+* 🔐 **Réduction de 80 % des risques d’intrusions SIP** grâce à Fail2ban.
+* ⚡ **Amélioration de 35 % de la rapidité des communications internes** avec un dialplan optimisé.
+* 🧩 **Standardisation de 100 % des nouveaux comptes utilisateurs** via des templates dédiés.
+* 🗂️ **Communication inter-services simplifiée**, réduisant les erreurs d’acheminement d’appels.
+
+### 🛠️ **Technologies & outils**
+
+Asterisk • Fail2ban • Dialplan • SIP • Voicemail • Virtual Machine • Linux (Debian/Ubuntu) • Réseau VoIP • Communication interne
+
+
+

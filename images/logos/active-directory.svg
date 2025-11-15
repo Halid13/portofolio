@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <defs>
+    <linearGradient id="adGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0078D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00BCF2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="80" height="80" fill="none"/>
+  <!-- Active Directory tree structure -->
+  <circle cx="40" cy="20" r="8" fill="url(#adGrad)"/>
+  <line x1="40" y1="28" x2="40" y2="40" stroke="url(#adGrad)" stroke-width="2.5"/>
+  <line x1="40" y1="40" x2="25" y2="52" stroke="url(#adGrad)" stroke-width="2.5"/>
+  <line x1="40" y1="40" x2="55" y2="52" stroke="url(#adGrad)" stroke-width="2.5"/>
+  <circle cx="25" cy="52" r="7" fill="url(#adGrad)" opacity="0.85"/>
+  <circle cx="55" cy="52" r="7" fill="url(#adGrad)" opacity="0.85"/>
+  <line x1="25" y1="59" x2="18" y2="68" stroke="url(#adGrad)" stroke-width="2"/>
+  <line x1="25" y1="59" x2="32" y2="68" stroke="url(#adGrad)" stroke-width="2"/>
+  <line x1="55" y1="59" x2="48" y2="68" stroke="url(#adGrad)" stroke-width="2"/>
+  <line x1="55" y1="59" x2="62" y2="68" stroke="url(#adGrad)" stroke-width="2"/>
+  <circle cx="18" cy="68" r="4" fill="#0078D4"/>
+  <circle cx="32" cy="68" r="4" fill="#0078D4"/>
+  <circle cx="48" cy="68" r="4" fill="#0078D4"/>
+  <circle cx="62" cy="68" r="4" fill="#0078D4"/>
+</svg>
