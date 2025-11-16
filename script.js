@@ -1,4 +1,16 @@
 // ========================================
+// CONFIGURATION EMAILJS
+// ========================================
+
+// Initialisation EmailJS avec votre clé publique
+// IMPORTANT: Remplacez 'VOTRE_PUBLIC_KEY' par votre vraie clé publique EmailJS
+(function() {
+    emailjs.init({
+        publicKey: 'selZhVqAAj4b9PUJG', // À remplacer
+    });
+})();
+
+// ========================================
 // NAVIGATION ACTIVE
 // ========================================
 
@@ -126,7 +138,7 @@ if (contactForm) {
         });
     });
 
-    // Animation des champs du formulaire au focus
+    // Animation des champs du formulaire au focus et correction en direct
     const formInputs = contactForm.querySelectorAll('.form-input, .form-textarea');
     formInputs.forEach(input => {
         input.addEventListener('focus', function() {
@@ -135,6 +147,26 @@ if (contactForm) {
 
         input.addEventListener('blur', function() {
             this.parentElement.style.transform = 'translateY(0)';
+        });
+
+        // Clear aria-invalid en saisie si la valeur devient valide
+        input.addEventListener('input', function() {
+            if (this.getAttribute('aria-invalid') === 'true') {
+                if (this.id === 'email') {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (emailRegex.test(this.value.trim())) {
+                        this.removeAttribute('aria-invalid');
+                    }
+                } else if (this.id === 'message') {
+                    if (this.value.trim().length >= 10) {
+                        this.removeAttribute('aria-invalid');
+                    }
+                } else {
+                    if (this.value.trim().length > 0) {
+                        this.removeAttribute('aria-invalid');
+                    }
+                }
+            }
         });
     });
 
@@ -152,22 +184,35 @@ if (contactForm) {
         const subject = document.getElementById('subject').value.trim();
         const message = document.getElementById('message').value.trim();
 
-        // Validation simple
+        // Validation simple (ne pas afficher les messages globaux ici)
         if (!name || !email || !subject || !message) {
-            showError('Veuillez remplir tous les champs du formulaire.');
+            const firstInvalid = !name ? 'name' : (!email ? 'email' : (!subject ? 'subject' : 'message'));
+            const el = document.getElementById(firstInvalid);
+            if (el) {
+                el.focus();
+                el.setAttribute('aria-invalid', 'true');
+            }
             return;
         }
 
         // Validation email
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            showError('Veuillez entrer une adresse email valide.');
+            const el = document.getElementById('email');
+            if (el) {
+                el.focus();
+                el.setAttribute('aria-invalid', 'true');
+            }
             return;
         }
 
         // Validation longueur du message
         if (message.length < 10) {
-            showError('Votre message doit contenir au moins 10 caractères.');
+            const el = document.getElementById('message');
+            if (el) {
+                el.focus();
+                el.setAttribute('aria-invalid', 'true');
+            }
             return;
         }
 
@@ -177,24 +222,64 @@ if (contactForm) {
         submitText.textContent = 'Envoi en cours...';
         submitLoader.hidden = false;
 
-        // Simulation d'envoi (remplacer par vraie requête API)
-        setTimeout(() => {
-            // Succès
-            submitBtn.disabled = false;
-            submitIcon.hidden = false;
-            submitText.textContent = 'Envoyer le message';
-            submitLoader.hidden = true;
+        // Envoi réel de l'email via EmailJS
+        // IMPORTANT: Remplacez 'VOTRE_SERVICE_ID' et 'VOTRE_TEMPLATE_ID' par vos vraies valeurs
+        const templateParams = {
+            from_name: name,
+            from_email: email,
+            subject: subject,
+            message: message,
+            to_name: 'Mohamed ONIFADE', // Votre nom
+        };
 
-            // Afficher le message de succès
-            showSuccess(`Merci ${name} ! Votre message a été envoyé avec succès. Je vous répondrai dans les plus brefs délais.`);
+        emailjs.send('service_tnzikj8', 'template_x7q8oct', templateParams)
+            .then(function(response) {
+                console.log('Email envoyé avec succès!', response.status, response.text);
+                
+                // Succès
+                submitBtn.disabled = false;
+                submitIcon.hidden = false;
+                submitText.textContent = 'Envoyer le message';
+                submitLoader.hidden = true;
 
-            // Réinitialiser le formulaire
-            contactForm.reset();
-            if (charCountSpan) charCountSpan.textContent = '0';
+                // Afficher le message de succès
+                showSuccess(`Merci ${name} ! Votre message a été envoyé avec succès. Je vous répondrai dans les plus brefs délais.`);
 
-            // Note: Pour envoyer vraiment le message, intégrez un service comme EmailJS, Formspree, ou votre propre backend
-            console.log('Message envoyé:', { name, email, subject, message });
-        }, 2000);
+                // Réinitialiser le formulaire
+                contactForm.reset();
+                if (charCountSpan) charCountSpan.textContent = '0';
+            }, function(error) {
+                console.error('Erreur lors de l\'envoi:', error);
+                
+                // Erreur
+                submitBtn.disabled = false;
+                submitIcon.hidden = false;
+                submitText.textContent = 'Envoyer le message';
+                submitLoader.hidden = true;
+
+                // Détection d'erreur OAuth Gmail expirée (EmailJS 412 Invalid grant)
+                const messageText =
+                    (typeof error === 'string' ? error : (error?.text || '')) +
+                    ' ' + (error?.status || '');
+                const isInvalidGrant = /Invalid grant/i.test(messageText) || error?.status === 412;
+
+                if (isInvalidGrant) {
+                    showError("Votre service Gmail EmailJS doit être reconnecté. Ouvrez EmailJS > Email Services > votre service Gmail > Reconnect. Ensuite réessayez. En cas de blocage, supprimez l'accès EmailJS dans votre Compte Google > Sécurité > Accès tiers et reconnectez.");
+                } else {
+                    showError("Une erreur est survenue lors de l'envoi. Veuillez réessayer ou me contacter directement par email à halidonfd13@gmail.com");
+                }
+
+                // Fallback pratique: ouvrir un mail pré-rempli pour ne pas perdre le message
+                try {
+                    const subjectEnc = encodeURIComponent(`[Portfolio] ${subject}`);
+                    const bodyEnc = encodeURIComponent(
+                        `De: ${name} <${email}>\nSujet: ${subject}\n\nMessage:\n${message}`
+                    );
+                    window.open(`mailto:halidonfd13@gmail.com?subject=${subjectEnc}&body=${bodyEnc}`, '_blank');
+                } catch (e) {
+                    // ignore fallback errors
+                }
+            });
     });
 
     function showSuccess(message) {
