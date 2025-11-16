@@ -78,49 +78,168 @@ if (hamburger) {
 }
 
 // ========================================
-// FORMULAIRE DE CONTACT
+// FORMULAIRE DE CONTACT (MODERNE & INTERACTIF)
 // ========================================
 
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
+    const messageTextarea = document.getElementById('message');
+    const charCountSpan = document.getElementById('charCount');
+    const submitBtn = contactForm.querySelector('.btn-submit');
+    const submitIcon = submitBtn.querySelector('.btn-submit-icon');
+    const submitText = submitBtn.querySelector('.btn-submit-text');
+    const submitLoader = submitBtn.querySelector('.btn-submit-loader');
+    const formSuccess = document.getElementById('formSuccess');
+    const formError = document.getElementById('formError');
+
+    // Compteur de caractères pour le message
+    if (messageTextarea && charCountSpan) {
+        messageTextarea.addEventListener('input', function() {
+            const count = this.value.length;
+            charCountSpan.textContent = count;
+            
+            // Animation du compteur
+            charCountSpan.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                charCountSpan.style.transform = 'scale(1)';
+            }, 150);
+        });
+    }
+
+    // Effet de survol avec position de la souris sur les méthodes de contact
+    const contactMethods = document.querySelectorAll('.contact-method');
+    contactMethods.forEach(method => {
+        method.addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const mouseXPercent = (x / rect.width) * 100;
+            const mouseYPercent = (y / rect.height) * 100;
+            this.style.setProperty('--mouse-x', `${mouseXPercent}%`);
+            this.style.setProperty('--mouse-y', `${mouseYPercent}%`);
+        });
+
+        method.addEventListener('mouseleave', function() {
+            this.style.setProperty('--mouse-x', '50%');
+            this.style.setProperty('--mouse-y', '50%');
+        });
+    });
+
+    // Animation des champs du formulaire au focus
+    const formInputs = contactForm.querySelectorAll('.form-input, .form-textarea');
+    formInputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            this.parentElement.style.transform = 'translateY(-2px)';
+        });
+
+        input.addEventListener('blur', function() {
+            this.parentElement.style.transform = 'translateY(0)';
+        });
+    });
+
+    // Soumission du formulaire
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
 
+        // Masquer les messages précédents
+        formSuccess.hidden = true;
+        formError.hidden = true;
+
         // Récupération des données du formulaire
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const subject = document.getElementById('subject').value;
-        const message = document.getElementById('message').value;
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const subject = document.getElementById('subject').value.trim();
+        const message = document.getElementById('message').value.trim();
 
         // Validation simple
         if (!name || !email || !subject || !message) {
-            alert('Veuillez remplir tous les champs du formulaire.');
+            showError('Veuillez remplir tous les champs du formulaire.');
             return;
         }
 
         // Validation email
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            alert('Veuillez entrer une adresse email valide.');
+            showError('Veuillez entrer une adresse email valide.');
             return;
         }
 
-        // Affichage du message de confirmation
-        alert(`Merci ${name}! Votre message a été reçu. Je vous répondrai dès que possible.`);
+        // Validation longueur du message
+        if (message.length < 10) {
+            showError('Votre message doit contenir au moins 10 caractères.');
+            return;
+        }
 
-        // Réinitialisation du formulaire
-        contactForm.reset();
+        // Animation de chargement
+        submitBtn.disabled = true;
+        submitIcon.hidden = true;
+        submitText.textContent = 'Envoi en cours...';
+        submitLoader.hidden = false;
 
-        // Note: Pour envoyer vraiment le message, vous devez configurer un backend
-        // ou utiliser un service comme EmailJS, Formspree, etc.
-        console.log({
-            name: name,
-            email: email,
-            subject: subject,
-            message: message
-        });
+        // Simulation d'envoi (remplacer par vraie requête API)
+        setTimeout(() => {
+            // Succès
+            submitBtn.disabled = false;
+            submitIcon.hidden = false;
+            submitText.textContent = 'Envoyer le message';
+            submitLoader.hidden = true;
+
+            // Afficher le message de succès
+            showSuccess(`Merci ${name} ! Votre message a été envoyé avec succès. Je vous répondrai dans les plus brefs délais.`);
+
+            // Réinitialiser le formulaire
+            contactForm.reset();
+            if (charCountSpan) charCountSpan.textContent = '0';
+
+            // Note: Pour envoyer vraiment le message, intégrez un service comme EmailJS, Formspree, ou votre propre backend
+            console.log('Message envoyé:', { name, email, subject, message });
+        }, 2000);
     });
+
+    function showSuccess(message) {
+        formSuccess.querySelector('p').textContent = message;
+        formSuccess.hidden = false;
+        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        // Animation d'entrée
+        formSuccess.style.animation = 'none';
+        void formSuccess.offsetHeight; // Force reflow
+        formSuccess.style.animation = 'slideInUp 400ms cubic-bezier(0.4, 0, 0.2, 1)';
+
+        // Masquer après 8 secondes
+        setTimeout(() => {
+            formSuccess.style.opacity = '0';
+            formSuccess.style.transform = 'translateY(-10px)';
+            setTimeout(() => {
+                formSuccess.hidden = true;
+                formSuccess.style.opacity = '1';
+                formSuccess.style.transform = 'translateY(0)';
+            }, 300);
+        }, 8000);
+    }
+
+    function showError(message) {
+        formError.querySelector('p').textContent = message;
+        formError.hidden = false;
+        formError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        // Animation d'entrée
+        formError.style.animation = 'none';
+        void formError.offsetHeight; // Force reflow
+        formError.style.animation = 'slideInUp 400ms cubic-bezier(0.4, 0, 0.2, 1)';
+
+        // Masquer après 6 secondes
+        setTimeout(() => {
+            formError.style.opacity = '0';
+            formError.style.transform = 'translateY(-10px)';
+            setTimeout(() => {
+                formError.hidden = true;
+                formError.style.opacity = '1';
+                formError.style.transform = 'translateY(0)';
+            }, 300);
+        }, 6000);
+    }
 }
 
 // ========================================

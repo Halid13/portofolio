@@ -534,7 +534,7 @@
                 <article class="proj-card" data-proj="cisco-firepower">
                     <header class="proj-header">
                         <div class="proj-leading">
-                            <img src="images/logos/cisco.svg" alt="Cisco" class="proj-logo" onerror="this.replaceWith(Object.assign(document.createElement('i'),{className:'fas fa-shield-alt'}))" />
+                            <img src="images/logos/cisco.png" alt="Cisco" class="proj-logo" onerror="this.replaceWith(Object.assign(document.createElement('i'),{className:'fas fa-shield-alt'}))" />
                         </div>
                         <div class="proj-heading">
                             <h3 class="proj-title">Réinitialisation et mise à jour d’un Cisco Firepower FPR-1120</h3>
@@ -767,57 +767,155 @@
     <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">Me Contacter</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email</h3>
-                            <p><a href="mailto:your.email@example.com">halidonfd13@gmail.com</a></p>
+            <p class="contact-subtitle">Vous avez un projet ou une opportunité ? Discutons-en !</p>
+            
+            <div class="contact-wrapper">
+                <!-- Informations de contact -->
+                <div class="contact-info-panel">
+                    <div class="contact-header">
+                        <div class="contact-avatar">
+                            <img src="images/profile.jpg" alt="Mohamed ONIFADE" />
+                            <span class="status-indicator" title="Disponible"></span>
+                        </div>
+                        <div class="contact-intro">
+                            <h3>Restons en contact</h3>
+                            <p>Je suis disponible pour discuter de vos projets d'infrastructure et de sécurité réseau.</p>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>Téléphone</h3>
-                            <p><a href="tel:+33617207237">+33 6 17 20 72 37</a></p>
+
+                    <div class="contact-methods">
+                        <a href="mailto:halidonfd13@gmail.com" class="contact-method" data-method="email">
+                            <div class="method-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="method-content">
+                                <span class="method-label">Email</span>
+                                <span class="method-value">halidonfd13@gmail.com</span>
+                            </div>
+                            <div class="method-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </a>
+
+                        <a href="tel:+33617207237" class="contact-method" data-method="phone">
+                            <div class="method-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="method-content">
+                                <span class="method-label">Téléphone</span>
+                                <span class="method-value">+33 6 17 20 72 37</span>
+                            </div>
+                            <div class="method-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/mohamed-onifade/" target="_blank" rel="noopener noreferrer" class="contact-method" data-method="linkedin">
+                            <div class="method-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div class="method-content">
+                                <span class="method-label">LinkedIn</span>
+                                <span class="method-value">Mohamed ONIFADE</span>
+                            </div>
+                            <div class="method-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </a>
+
+                        <div class="contact-method" data-method="location">
+                            <div class="method-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="method-content">
+                                <span class="method-label">Localisation</span>
+                                <span class="method-value">Paris, France</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Localisation</h3>
-                            <p>France</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-linkedin"></i>
-                        <div>
-                            <h3>LinkedIn</h3>
-                            <p><a href="https://www.linkedin.com/in/mohamed-onifade/" target="_blank">Mon profil LinkedIn</a></p>
+
+                    <div class="contact-social">
+                        <p class="social-title">Suivez-moi</p>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/mohamed-onifade/" target="_blank" rel="noopener noreferrer" class="social-btn" title="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/Halid13" target="_blank" rel="noopener noreferrer" class="social-btn" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="mailto:halidonfd13@gmail.com" class="social-btn" title="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Nom complet</label>
-                        <input type="text" id="name" name="name" required>
+                <!-- Formulaire de contact -->
+                <div class="contact-form-panel">
+                    <div class="form-header">
+                        <h3>Envoyez-moi un message</h3>
+                        <p>Remplissez le formulaire ci-dessous et je vous répondrai dans les plus brefs délais.</p>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Sujet</label>
-                        <input type="text" id="subject" name="subject" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Envoyer</button>
-                </form>
+
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="name" class="form-label">
+                                    <i class="fas fa-user"></i>
+                                    <span>Nom complet</span>
+                                </label>
+                                <input type="text" id="name" name="name" class="form-input" placeholder="Votre nom" required autocomplete="name" />
+                            </div>
+
+                            <div class="form-field">
+                                <label for="email" class="form-label">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>Email</span>
+                                </label>
+                                <input type="email" id="email" name="email" class="form-input" placeholder="votre@email.com" required autocomplete="email" />
+                            </div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="subject" class="form-label">
+                                <i class="fas fa-tag"></i>
+                                <span>Sujet</span>
+                            </label>
+                            <input type="text" id="subject" name="subject" class="form-input" placeholder="De quoi souhaitez-vous parler ?" required />
+                        </div>
+
+                        <div class="form-field">
+                            <label for="message" class="form-label">
+                                <i class="fas fa-comment-dots"></i>
+                                <span>Message</span>
+                            </label>
+                            <textarea id="message" name="message" class="form-textarea" rows="6" placeholder="Décrivez votre projet ou votre demande..." required></textarea>
+                            <div class="char-counter">
+                                <span id="charCount">0</span> caractères
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-submit">
+                            <span class="btn-submit-icon">
+                                <i class="fas fa-paper-plane"></i>
+                            </span>
+                            <span class="btn-submit-text">Envoyer le message</span>
+                            <span class="btn-submit-loader" hidden>
+                                <i class="fas fa-circle-notch fa-spin"></i>
+                            </span>
+                        </button>
+
+                        <div class="form-success" id="formSuccess" hidden>
+                            <i class="fas fa-check-circle"></i>
+                            <p>Message envoyé avec succès ! Je vous répondrai rapidement.</p>
+                        </div>
+
+                        <div class="form-error" id="formError" hidden>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <p>Une erreur est survenue. Veuillez réessayer.</p>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
