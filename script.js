@@ -174,6 +174,13 @@ window.addEventListener('error', function(e) {
 
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
+    
+    // Créer les particules animées dans le hero
+    createHeroParticles();
+    
+    // Animer les statistiques du hero
+    animateHeroStats();
+    
     // Animation du nom (hero) - plus rapide
     const heroNameEl = document.getElementById('hero-name');
     if (heroNameEl) {
@@ -1102,6 +1109,112 @@ document.addEventListener('DOMContentLoaded', () => {
     setupFooterReveal();
     setupFooterParallax();
 });
+
+// ========================================
+// HERO PARTICLES ANIMATION
+// ========================================
+
+function createHeroParticles() {
+    const particlesContainer = document.getElementById('hero-particles');
+    if (!particlesContainer) return;
+    
+    const particleCount = 30;
+    
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        // Position aléatoire
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        
+        // Taille aléatoire
+        const size = Math.random() * 4 + 2;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        
+        // Animation aléatoire
+        particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        particle.style.animationDelay = Math.random() * 2 + 's';
+        
+        particlesContainer.appendChild(particle);
+    }
+    
+    // Ajouter les styles CSS pour les particules
+    const style = document.createElement('style');
+    style.textContent = `
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(63,108,168,0.6), rgba(63,108,168,0.1));
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleFloat infinite ease-in-out;
+        }
+        
+        @keyframes particleFloat {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translate(20px, -20px) scale(1.2);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translate(-10px, -40px) scale(0.8);
+                opacity: 0.4;
+            }
+            75% {
+                transform: translate(-30px, -20px) scale(1.1);
+                opacity: 0.7;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// ========================================
+// HERO STATS ANIMATION
+// ========================================
+
+function animateHeroStats() {
+    const statItems = document.querySelectorAll('.hero-stat-item');
+    
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = parseInt(entry.target.getAttribute('data-count'));
+                const numberEl = entry.target.querySelector('.stat-number');
+                
+                animateNumber(numberEl, 0, target, 2000);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    statItems.forEach(item => observer.observe(item));
+}
+
+function animateNumber(element, start, end, duration) {
+    const range = end - start;
+    const increment = range / (duration / 16);
+    let current = start;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= end) {
+            element.textContent = end;
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current);
+        }
+    }, 16);
+}
 
 // Add CSS for ripple effect dynamically
 const rippleStyle = document.createElement('style');

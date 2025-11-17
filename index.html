@@ -52,12 +52,18 @@
 
     <!-- SECTION ACCUEIL -->
     <section id="accueil" class="hero">
+        <!-- Particules animées en arrière-plan -->
+        <div class="hero-particles" id="hero-particles"></div>
+        
         <!-- Aurora minimaliste en arrière-plan -->
         <div class="aurora" aria-hidden="true">
             <span class="blob a1"></span>
             <span class="blob a2"></span>
             <span class="blob a3"></span>
         </div>
+        
+        <!-- Grille animée futuriste -->
+        <div class="hero-grid" aria-hidden="true"></div>
         <!-- Illustrations thématiques discrètes -->
         <div class="hero-illustrations" aria-hidden="true">
             <!-- Serveur -->
@@ -101,24 +107,63 @@
         </div>
         <div class="container">
             <div class="hero-content">
-                <div class="hero-image">
-                    <img src="images/profile.jpg" alt="Mohamed ONIFADE" class="profile-hero">
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-glow"></div>
+                    <div class="hero-image">
+                        <div class="profile-ring ring-1"></div>
+                        <div class="profile-ring ring-2"></div>
+                        <div class="profile-ring ring-3"></div>
+                        <img src="images/profile.jpg" alt="Mohamed ONIFADE" class="profile-hero">
+                    </div>
                 </div>
-                <h1 class="hero-name"><span id="hero-name" class="type-caret" aria-label="Nom et prénom">Mohamed ONIFADE</span></h1>
+                <h1 class="hero-name">
+                    <span class="hero-greeting">Bonjour, je suis</span>
+                    <span id="hero-name" class="type-caret" aria-label="Nom et prénom">Mohamed ONIFADE</span>
+                </h1>
                 <div class="hero-meta">
-                    <div class="hero-role hero-meta-item" aria-label="Domaine">
-                        <i class="fas fa-network-wired hero-icon"></i>
+                    <div class="hero-role hero-meta-item" aria-label="Domaine" data-hover="Expertise technique">
+                        <div class="meta-icon-wrapper">
+                            <i class="fas fa-network-wired hero-icon"></i>
+                        </div>
                         <span>Administrateur réseau et système</span>
+                        <div class="meta-shine"></div>
                     </div>
-                    <div class="hero-school hero-meta-item" aria-label="Établissement">
-                        <i class="fas fa-graduation-cap hero-icon"></i>
+                    <div class="hero-school hero-meta-item" aria-label="Établissement" data-hover="Formation">
+                        <div class="meta-icon-wrapper">
+                            <i class="fas fa-graduation-cap hero-icon"></i>
+                        </div>
                         <span>SUPINFO Paris</span>
+                        <div class="meta-shine"></div>
                     </div>
                 </div>
-                <p class="hero-tagline" aria-label="Présentation">Disponible pour optimiser, sécuriser et maintenir vos infrastructures.</p>
+                <p class="hero-tagline" aria-label="Présentation">
+                    <span class="tagline-icon">💼</span>
+                    Disponible pour optimiser, sécuriser et maintenir vos infrastructures.
+                    <span class="tagline-cursor">|</span>
+                </p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Me contacter</a>
-                    <a href="#projets" class="btn btn-secondary">Voir mes projets</a>
+                    <a href="#contact" class="btn btn-primary btn-animated">
+                        <span class="btn-content">
+                            <i class="fas fa-envelope btn-icon"></i>
+                            <span class="btn-text">Me contacter</span>
+                        </span>
+                        <span class="btn-glow"></span>
+                    </a>
+                    <a href="#projets" class="btn btn-secondary btn-animated">
+                        <span class="btn-content">
+                            <i class="fas fa-folder-open btn-icon"></i>
+                            <span class="btn-text">Voir mes projets</span>
+                        </span>
+                        <span class="btn-glow"></span>
+                    </a>
+                </div>
+                
+                <!-- Scroll indicator -->
+                <div class="scroll-indicator">
+                    <span class="scroll-text">Découvrir</span>
+                    <div class="scroll-mouse">
+                        <div class="scroll-wheel"></div>
+                    </div>
                 </div>
             </div>
         </div>
