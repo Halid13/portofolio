@@ -1,4 +1,64 @@
 // ========================================
+// PROTECTION ET SÉCURITÉ
+// ========================================
+
+// Désactiver le clic droit
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+// Désactiver les raccourcis clavier dangereux
+document.addEventListener('keydown', function(e) {
+    // Ctrl+Shift+I (DevTools)
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+        e.preventDefault();
+        return false;
+    }
+    // Ctrl+Shift+J (Console)
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+        e.preventDefault();
+        return false;
+    }
+    // Ctrl+U (View Source)
+    if (e.ctrlKey && e.keyCode === 85) {
+        e.preventDefault();
+        return false;
+    }
+    // Ctrl+S (Save Page)
+    if (e.ctrlKey && e.keyCode === 83) {
+        e.preventDefault();
+        return false;
+    }
+    // Ctrl+Shift+C (Inspect Element)
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
+        e.preventDefault();
+        return false;
+    }
+    // F12 (DevTools)
+    if (e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+// Protection contre la sélection de texte (optionnel)
+document.addEventListener('selectstart', function(e) {
+    // Autoriser la sélection dans les champs de formulaire
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+        return true;
+    }
+    e.preventDefault();
+    return false;
+});
+
+// Masquer les erreurs dans la console
+window.addEventListener('error', function(e) {
+    e.preventDefault();
+    return true;
+});
+
+// ========================================
 // CONFIGURATION EMAILJS
 // ========================================
 
