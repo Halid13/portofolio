@@ -759,7 +759,7 @@ function animateFooterStats() {
     if (!stats.length) return;
 
     const observerOptions = {
-        threshold: 0.5,
+        threshold: 0.3,
         rootMargin: '0px'
     };
 
@@ -785,7 +785,10 @@ function animateFooterStats() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                animateCount(entry.target);
+                // Small delay to ensure visibility
+                setTimeout(() => {
+                    animateCount(entry.target);
+                }, 300);
                 observer.unobserve(entry.target);
             }
         });
@@ -890,8 +893,8 @@ function setupFooterReveal() {
     if (!footer) return;
 
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
+        threshold: 0.05,
+        rootMargin: '0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -899,7 +902,6 @@ function setupFooterReveal() {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
                 entry.target.style.animation = 'fadeInUp 1s ease-out forwards';
-                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
@@ -908,7 +910,7 @@ function setupFooterReveal() {
     const sections = footer.querySelectorAll('.footer-main, .footer-social, .footer-bottom');
     sections.forEach((section, index) => {
         section.style.opacity = '0';
-        section.style.animationDelay = `${index * 0.2}s`;
+        section.style.animationDelay = `${index * 0.15}s`;
         section.style.animationFillMode = 'forwards';
         observer.observe(section);
     });
