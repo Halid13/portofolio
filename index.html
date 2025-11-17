@@ -925,42 +925,143 @@
 
     <!-- FOOTER -->
     <footer class="footer">
+        <!-- Animated gradient background -->
+        <div class="footer-bg-gradient" aria-hidden="true"></div>
+        
+        <!-- Floating particles animation -->
+        <div class="footer-particles" aria-hidden="true">
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+        </div>
+        
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Mohamed ONIFADE</h3>
-                    <p>Master 2 - Administration Réseau et Système</p>
+            <!-- Main Footer Content -->
+            <div class="footer-main">
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="images/apple-touch-icon3.svg" alt="Logo Mohamed ONIFADE" width="48" height="48" />
+                    </div>
+                    <h3 class="footer-brand-name">Mohamed ONIFADE</h3>
+                    <p class="footer-brand-tagline">Administrateur Réseau & Système</p>
+                    <p class="footer-brand-desc">
+                        Passionné par l'infrastructure, la sécurité réseau et le cloud computing. 
+                        Disponible pour transformer vos défis IT en solutions innovantes.
+                    </p>
+                    <!-- Quick stats -->
+                    <div class="footer-stats">
+                        <div class="footer-stat-item">
+                            <span class="stat-number" data-target="7">0</span>
+                            <span class="stat-label">Certifications</span>
+                        </div>
+                        <div class="footer-stat-item">
+                            <span class="stat-number" data-target="5">0</span>
+                            <span class="stat-label">Projets Majeurs</span>
+                        </div>
+                        <div class="footer-stat-item">
+                            <span class="stat-number" data-target="100">0</span>
+                            <span class="stat-label">% Disponible</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h4>Navigation Rapide</h4>
-                    <ul>
-                        <li><a href="#accueil">Accueil</a></li>
-                        <li><a href="#apropos">À propos</a></li>
-                        <li><a href="#competences">Compétences</a></li>
-                        <li><a href="#projets">Projets</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Suivez-moi</h4>
-                    <div class="social-links">
-                        <a href="https://linkedin.com" target="_blank" title="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com" target="_blank" title="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://twitter.com" target="_blank" title="Twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="mailto:your.email@example.com" title="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
+
+                <!-- Navigation Links -->
+                <div class="footer-links-group">
+                    <div class="footer-links-col">
+                        <h4 class="footer-links-title">Navigation</h4>
+                        <ul class="footer-links-list">
+                            <li><a href="#accueil" class="footer-link"><i class="fas fa-chevron-right"></i>Accueil</a></li>
+                            <li><a href="#apropos" class="footer-link"><i class="fas fa-chevron-right"></i>À propos</a></li>
+                            <li><a href="#competences" class="footer-link"><i class="fas fa-chevron-right"></i>Compétences</a></li>
+                            <li><a href="#projets" class="footer-link"><i class="fas fa-chevron-right"></i>Projets</a></li>
+                            <li><a href="#contact" class="footer-link"><i class="fas fa-chevron-right"></i>Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links-col">
+                        <h4 class="footer-links-title">Compétences</h4>
+                        <ul class="footer-links-list">
+                            <li><a href="#competences" class="footer-link"><i class="fas fa-server"></i>Virtualisation</a></li>
+                            <li><a href="#competences" class="footer-link"><i class="fas fa-network-wired"></i>Réseau & Infrastructure</a></li>
+                            <li><a href="#competences" class="footer-link"><i class="fas fa-cloud"></i>Cloud Computing</a></li>
+                            <li><a href="#competences" class="footer-link"><i class="fas fa-shield-alt"></i>Sécurité</a></li>
+                            <li><a href="#competences" class="footer-link"><i class="fas fa-code"></i>Développement</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links-col">
+                        <h4 class="footer-links-title">Contact</h4>
+                        <ul class="footer-contact-list">
+                            <li class="footer-contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:halidonfd13@gmail.com">halidonfd13@gmail.com</a>
+                            </li>
+                            <li class="footer-contact-item">
+                                <i class="fas fa-phone"></i>
+                                <a href="tel:+33617207237">+33 6 17 20 72 37</a>
+                            </li>
+                            <li class="footer-contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Paris, France</span>
+                            </li>
+                            <li class="footer-contact-item">
+                                <i class="fas fa-briefcase"></i>
+                                <span>Disponible en alternance</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
+
+            <!-- Social Media Section -->
+            <div class="footer-social">
+                <p class="footer-social-title">Suivez-moi sur les réseaux</p>
+                <div class="footer-social-links">
+                    <a href="https://www.linkedin.com/in/mohamed-onifade/" target="_blank" rel="noopener noreferrer" class="social-link" data-platform="linkedin">
+                        <div class="social-link-inner">
+                            <i class="fab fa-linkedin"></i>
+                            <span class="social-tooltip">LinkedIn</span>
+                        </div>
+                    </a>
+                    <a href="https://github.com/Halid13" target="_blank" rel="noopener noreferrer" class="social-link" data-platform="github">
+                        <div class="social-link-inner">
+                            <i class="fab fa-github"></i>
+                            <span class="social-tooltip">GitHub</span>
+                        </div>
+                    </a>
+                    <a href="mailto:halidonfd13@gmail.com" class="social-link" data-platform="email">
+                        <div class="social-link-inner">
+                            <i class="fas fa-envelope"></i>
+                            <span class="social-tooltip">Email</span>
+                        </div>
+                    </a>
+                    <a href="tel:+33617207237" class="social-link" data-platform="phone">
+                        <div class="social-link-inner">
+                            <i class="fas fa-phone"></i>
+                            <span class="social-tooltip">Téléphone</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
             <div class="footer-bottom">
-                <p>&copy; 2025 Mohamed ONIFADE. Tous droits réservés.</p>
+                <div class="footer-bottom-content">
+                    <p class="footer-copyright">
+                        <i class="fas fa-heart"></i>
+                        <span>Conçu & développé par <strong>Mohamed ONIFADE</strong></span>
+                    </p>
+                    <p class="footer-year">
+                        &copy; <span id="currentYear">2025</span> Tous droits réservés
+                    </p>
+                </div>
+                <button class="scroll-to-top" id="scrollToTop" title="Retour en haut">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
             </div>
         </div>
     </footer>

@@ -749,3 +749,240 @@ function setupProjectCards() {
     });
 }
 
+// ========================================
+// FOOTER ANIMATIONS & INTERACTIONS
+// ========================================
+
+// Animated Counter for Footer Stats
+function animateFooterStats() {
+    const stats = document.querySelectorAll('.stat-number');
+    if (!stats.length) return;
+
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px'
+    };
+
+    const animateCount = (element) => {
+        const target = parseInt(element.getAttribute('data-target'));
+        const duration = 2000; // 2 seconds
+        const increment = target / (duration / 16); // 60fps
+        let current = 0;
+
+        const updateCount = () => {
+            current += increment;
+            if (current < target) {
+                element.textContent = Math.floor(current);
+                requestAnimationFrame(updateCount);
+            } else {
+                element.textContent = target;
+            }
+        };
+
+        updateCount();
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCount(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    stats.forEach(stat => observer.observe(stat));
+}
+
+// Scroll to Top Button
+function setupScrollToTop() {
+    const scrollBtn = document.getElementById('scrollToTop');
+    if (!scrollBtn) return;
+
+    // Initial state
+    scrollBtn.style.display = 'none';
+    scrollBtn.style.opacity = '0';
+
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            scrollBtn.style.display = 'flex';
+            setTimeout(() => {
+                scrollBtn.style.opacity = '1';
+                scrollBtn.style.transform = 'translateY(0)';
+            }, 10);
+        } else {
+            scrollBtn.style.opacity = '0';
+            scrollBtn.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+                if (window.scrollY <= 500) {
+                    scrollBtn.style.display = 'none';
+                }
+            }, 300);
+        }
+    });
+
+    // Smooth scroll to top
+    scrollBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// Update current year dynamically
+function updateCurrentYear() {
+    const yearElement = document.getElementById('currentYear');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+}
+
+// Footer Links Smooth Scroll
+function setupFooterLinksScroll() {
+    const footerLinks = document.querySelectorAll('.footer-link[href^="#"]');
+    
+    footerLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
+                targetSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+
+// Social Links - Ripple Effect on Click
+function setupSocialLinksRipple() {
+    const socialLinks = document.querySelectorAll('.social-link');
+    
+    socialLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple-effect';
+            
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        });
+    });
+}
+
+// Footer Reveal Animation on Scroll
+function setupFooterReveal() {
+    const footer = document.querySelector('.footer');
+    if (!footer) return;
+
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.animation = 'fadeInUp 1s ease-out forwards';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe footer sections
+    const sections = footer.querySelectorAll('.footer-main, .footer-social, .footer-bottom');
+    sections.forEach((section, index) => {
+        section.style.opacity = '0';
+        section.style.animationDelay = `${index * 0.2}s`;
+        section.style.animationFillMode = 'forwards';
+        observer.observe(section);
+    });
+}
+
+// Parallax Effect on Footer Background
+function setupFooterParallax() {
+    const footer = document.querySelector('.footer');
+    const footerBg = document.querySelector('.footer-bg-gradient');
+    
+    if (!footer || !footerBg) return;
+
+    window.addEventListener('scroll', () => {
+        const footerTop = footer.offsetTop;
+        const scrollPos = window.scrollY;
+        
+        if (scrollPos > footerTop - window.innerHeight) {
+            const offset = (scrollPos - (footerTop - window.innerHeight)) * 0.3;
+            footerBg.style.transform = `translateY(${offset}px)`;
+        }
+    });
+}
+
+// Initialize all footer animations
+document.addEventListener('DOMContentLoaded', () => {
+    animateFooterStats();
+    setupScrollToTop();
+    updateCurrentYear();
+    setupFooterLinksScroll();
+    setupSocialLinksRipple();
+    setupFooterReveal();
+    setupFooterParallax();
+});
+
+// Add CSS for ripple effect dynamically
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `
+    .ripple-effect {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.6);
+        transform: scale(0);
+        animation: ripple 0.6s ease-out;
+        pointer-events: none;
+    }
+    
+    @keyframes ripple {
+        to {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes fadeOutDown {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+    }
+`;
+document.head.appendChild(rippleStyle);
+
