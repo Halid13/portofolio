@@ -40,9 +40,23 @@ document.addEventListener('keydown', function(e) {
         e.preventDefault();
         return false;
     }
+    // Ctrl+A (Select All) - Optionnel
+    if (e.ctrlKey && e.keyCode === 65) {
+        // Autoriser dans les champs de formulaire
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+            return true;
+        }
+        e.preventDefault();
+        return false;
+    }
+    // Ctrl+P (Print) - Optionnel
+    if (e.ctrlKey && e.keyCode === 80) {
+        e.preventDefault();
+        return false;
+    }
 });
 
-// Protection contre la sélection de texte (optionnel)
+// Protection contre la sélection de texte
 document.addEventListener('selectstart', function(e) {
     // Autoriser la sélection dans les champs de formulaire
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
@@ -51,6 +65,90 @@ document.addEventListener('selectstart', function(e) {
     e.preventDefault();
     return false;
 });
+
+// Protection contre le glisser-déposer
+document.addEventListener('dragstart', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+document.addEventListener('drop', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+// Masquer les erreurs JavaScript dans la console
+window.addEventListener('error', function(e) {
+    e.preventDefault();
+    return true;
+});
+
+// Désactiver les logs console en production
+(function() {
+    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+        console.log = function() {};
+        console.warn = function() {};
+        console.error = function() {};
+        console.info = function() {};
+        console.debug = function() {};
+    }
+})();
+
+// Détection des outils de développeur
+(function() {
+    let devtoolsOpen = false;
+    const threshold = 160;
+    
+    const checkDevTools = function() {
+        const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+        const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+        
+        if (widthThreshold || heightThreshold) {
+            if (!devtoolsOpen) {
+                devtoolsOpen = true;
+                // Alerte de sécurité
+                document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#0F1724;color:#fff;font-family:Arial;text-align:center;"><div><h1>⚠️ Accès non autorisé</h1><p>Les outils de développement sont désactivés pour des raisons de sécurité.</p></div></div>';
+            }
+        } else {
+            devtoolsOpen = false;
+        }
+    };
+    
+    // Vérifier toutes les secondes
+    setInterval(checkDevTools, 1000);
+    
+    // Vérifier au redimensionnement
+    window.addEventListener('resize', checkDevTools);
+})();
+
+// Protection contre l'inspection d'éléments
+document.addEventListener('mousedown', function(e) {
+    // Bloquer le clic avec la touche Shift (parfois utilisé pour inspecter)
+    if (e.shiftKey) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+// Désactiver la copie de texte
+document.addEventListener('copy', function(e) {
+    // Autoriser dans les champs de formulaire
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+        return true;
+    }
+    e.preventDefault();
+    return false;
+});
+
+// Désactiver le couper
+document.addEventListener('cut', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+// Message de console personnalisé
+console.log('%c🛡️ Protection Active', 'color: #3b82f6; font-size: 20px; font-weight: bold;');
+console.log('%c⚠️ Attention: Ce site est protégé. Toute tentative d\'accès non autorisé au code source est surveillée.', 'color: #ef4444; font-size: 14px;');
 
 // Masquer les erreurs dans la console
 window.addEventListener('error', function(e) {
