@@ -2,6 +2,46 @@
 // PROTECTION ET SÉCURITÉ
 // ========================================
 
+// ========================================
+// SPLASH SCREEN (masque après 2s avec barre synchronisée)
+// ========================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const splash = document.getElementById('splash');
+    const progressBar = document.getElementById('splashProgressBar');
+    const percentText = document.getElementById('splashPercent');
+    
+    if (splash && progressBar && percentText) {
+        const duration = 2000; // 2 secondes exactement
+        const startTime = Date.now();
+        
+        // Animation de la barre de progression synchronisée
+        function updateProgress() {
+            const elapsed = Date.now() - startTime;
+            const progress = Math.min((elapsed / duration) * 100, 100);
+            
+            progressBar.style.width = progress + '%';
+            percentText.textContent = Math.floor(progress) + '%';
+            
+            if (progress < 100) {
+                requestAnimationFrame(updateProgress);
+            } else {
+                // Progression terminée à 100%, commencer le fade-out
+                setTimeout(() => {
+                    splash.classList.add('hide');
+                    // Retirer complètement du DOM après l'animation
+                    setTimeout(() => {
+                        if (splash && splash.parentNode) splash.parentNode.removeChild(splash);
+                    }, 650);
+                }, 100); // Petit délai pour montrer 100%
+            }
+        }
+        
+        // Démarrer l'animation
+        requestAnimationFrame(updateProgress);
+    }
+});
+
 // Désactiver le clic droit
 document.addEventListener('contextmenu', function(e) {
     e.preventDefault();

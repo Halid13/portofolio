@@ -22,6 +22,113 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
+    <!-- Splash Screen (2s) - Modern Design -->
+    <div id="splash" class="splash-screen" role="status" aria-live="polite" aria-label="Chargement du portfolio">
+        <!-- Animated gradient mesh background -->
+        <div class="splash-gradient-mesh" aria-hidden="true">
+            <div class="mesh-blob blob-1"></div>
+            <div class="mesh-blob blob-2"></div>
+            <div class="mesh-blob blob-3"></div>
+        </div>
+        
+        <!-- Grid overlay -->
+        <div class="splash-grid-overlay" aria-hidden="true"></div>
+        
+        <!-- Floating geometric shapes -->
+        <div class="splash-shapes" aria-hidden="true">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+        
+        <!-- Technical icons with modern styling -->
+        <div class="splash-tech-icons" aria-hidden="true">
+            <!-- Server -->
+            <svg class="tech-icon icon-1" viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="10" width="80" height="30" rx="6" stroke="currentColor" stroke-width="2.5"/>
+                <rect x="10" y="55" width="80" height="30" rx="6" stroke="currentColor" stroke-width="2.5"/>
+                <rect x="10" y="100" width="80" height="30" rx="6" stroke="currentColor" stroke-width="2.5"/>
+                <circle cx="24" cy="25" r="3" fill="currentColor"/>
+                <circle cx="24" cy="70" r="3" fill="currentColor"/>
+                <circle cx="24" cy="115" r="3" fill="currentColor"/>
+            </svg>
+            
+            <!-- Shield -->
+            <svg class="tech-icon icon-2" viewBox="0 0 110 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M55 10L90 22V62C90 89 76 106 55 120C34 106 20 89 20 62V22L55 10Z" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M55 45L45 55L52 65L70 50Z" stroke="currentColor" stroke-width="2.5" fill="currentColor" opacity="0.3"/>
+            </svg>
+            
+            <!-- Network -->
+            <svg class="tech-icon icon-3" viewBox="0 0 150 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="30" cy="90" r="12" stroke="currentColor" stroke-width="2.5"/>
+                <circle cx="120" cy="90" r="12" stroke="currentColor" stroke-width="2.5"/>
+                <circle cx="75" cy="30" r="12" stroke="currentColor" stroke-width="2.5"/>
+                <line x1="75" y1="42" x2="30" y2="78" stroke="currentColor" stroke-width="2.5"/>
+                <line x1="75" y1="42" x2="120" y2="78" stroke="currentColor" stroke-width="2.5"/>
+                <line x1="42" y1="90" x2="108" y2="90" stroke="currentColor" stroke-width="2.5"/>
+            </svg>
+            
+            <!-- Database -->
+            <svg class="tech-icon icon-4" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="60" cy="28" rx="40" ry="14" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M20 28V96C20 104 36 110 60 110C84 110 100 104 100 96V28" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M20 62C20 70 36 76 60 76C84 76 100 70 100 62" stroke="currentColor" stroke-width="2.5"/>
+            </svg>
+        </div>
+        
+        <div class="splash-content">
+            <!-- Modern logo with glassmorphism -->
+            <div class="splash-logo-container" aria-hidden="true">
+                <div class="logo-glow"></div>
+                <div class="logo-rings">
+                    <div class="logo-ring ring-1"></div>
+                    <div class="logo-ring ring-2"></div>
+                    <div class="logo-ring ring-3"></div>
+                </div>
+                <div class="logo-glass">
+                    <img src="images/apple-touch-icon3.svg" alt="Logo" width="80" height="80" />
+                </div>
+            </div>
+            
+            <!-- Text content with modern typography -->
+            <div class="splash-text">
+                <h1 class="splash-name">
+                    <span class="name-text">Mohamed ONIFADE</span>
+                    <span class="name-accent"></span>
+                </h1>
+                <p class="splash-role">
+                    <span class="role-icon">⚡</span>
+                    <span class="role-text">Administrateur Réseau & Système</span>
+                </p>
+            </div>
+            
+            <!-- Modern progress bar with percentage -->
+            <div class="splash-loader" aria-hidden="true">
+                <div class="loader-track">
+                    <div class="loader-bar" id="splashProgressBar">
+                        <div class="bar-shimmer"></div>
+                    </div>
+                </div>
+                <div class="loader-info">
+                    <span class="loader-label">Chargement</span>
+                    <span class="loader-percent" id="splashPercent">0%</span>
+                </div>
+            </div>
+            
+            <!-- Animated particles -->
+            <div class="splash-particles" aria-hidden="true">
+                <span class="particle p-1"></span>
+                <span class="particle p-2"></span>
+                <span class="particle p-3"></span>
+                <span class="particle p-4"></span>
+                <span class="particle p-5"></span>
+                <span class="particle p-6"></span>
+            </div>
+        </div>
+    </div>
+
     <!-- HEADER / NAVIGATION -->
     <header class="header">
         <div class="container">
