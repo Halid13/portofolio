@@ -420,20 +420,26 @@ body {
 
 .profile-ring {
     position: absolute;
+    top: 50%;
+    left: 50%;
     border-radius: 50%;
     border: 2px solid transparent;
     animation: ringRotate 10s linear infinite;
 }
 
 .profile-ring.ring-1 {
-    inset: -15px;
+    width: calc(100% + 30px);
+    height: calc(100% + 30px);
+    transform: translate(-50%, -50%);
     border-color: rgba(63,108,168,0.3);
     border-top-color: var(--secondary-color);
     animation-duration: 8s;
 }
 
 .profile-ring.ring-2 {
-    inset: -25px;
+    width: calc(100% + 50px);
+    height: calc(100% + 50px);
+    transform: translate(-50%, -50%);
     border-color: rgba(63,108,168,0.2);
     border-right-color: var(--accent-color);
     animation-duration: 12s;
@@ -441,15 +447,17 @@ body {
 }
 
 .profile-ring.ring-3 {
-    inset: -35px;
+    width: calc(100% + 70px);
+    height: calc(100% + 70px);
+    transform: translate(-50%, -50%);
     border-color: rgba(63,108,168,0.15);
     border-bottom-color: var(--secondary-color);
     animation-duration: 15s;
 }
 
 @keyframes ringRotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .type-caret {
